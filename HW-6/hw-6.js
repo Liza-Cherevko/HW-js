@@ -26,6 +26,7 @@ const students = [
         marks: [10, 9, 8, 9 ]
     }
 ]
+
 let marks = calculateStudentAverageMark (students[2]);
 let allMarks = getAllMarks(students[0],students[1],students[2],students[3])
 let overalMark = calculateGroupAverageMark(students);
@@ -39,12 +40,12 @@ function getAllMarks(val1,val2,val3,val4){
     val1 = val1.marks.reduce((sum, current) => sum + current,0);
     val2 = val2.marks.reduce((sum, current) => sum + current,0);
     val3 = val3.marks.reduce((sum, current) => sum + current,0);
-    val4 = val3.marks.reduce((sum, current) => sum + current,0);
+    val4 = val4.marks.reduce((sum, current) => sum + current,0);
   return val1+val2+val3+val4;
 }
 
  function calculateGroupAverageMark(students){
-   let result =
+  return result = allMarks/19
  }
 
 

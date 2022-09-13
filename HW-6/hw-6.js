@@ -28,13 +28,29 @@ const students = [
 ]
 
 let marks = calculateStudentAverageMark (students[2]);
+console.log(marks)
 let allMarks = getAllMarks(students[0],students[1],students[2],students[3])
 let overalMark = calculateGroupAverageMark(students);
 
  function calculateStudentAverageMark (studentsMark){
-    // let studentArr = students.find(item => item.id == 12);
-    return studentsMark.marks.reduce((sum, current) => sum + current,0)/ 4
+   return studentsMark.marks.reduce((sum, current) => sum + current,0)/studentMarkLenght(students);
  }
+ function studentMarkLenght(students){
+     let studentArr = students.find(item => item.id == 12);
+     return studentArr.marks.length
+ }
+
+ function AllstudentMarkLenght(students){
+    let allLenght = students.map(item => {
+        let container = {};
+    
+        container[item.marks] = item.marks.length;
+      
+        return container;
+    })
+    console.log(allLenght)
+    return allLenght
+}
  
 function getAllMarks(val1,val2,val3,val4){
     val1 = val1.marks.reduce((sum, current) => sum + current,0);

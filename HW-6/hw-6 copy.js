@@ -27,26 +27,17 @@ const students = [
     }
 ]
 
-let marks = calculateStudentAverageMark (students[1]);
-console.log('average mark one student:', marks)
-let allMarks = getAllMarks(students)
-let globalAvarageMarks = calculateGroupAverageMark();
-
-console.log('average all mark one student:', globalAvarageMarks)
+console.log('average all mark one student:', calculateStudentAverageMark(students[2]))
+console.log('average all mark for group:', calculateGroupAverageMark())
 
 // one student
- function calculateStudentAverageMark (studentsMark){
-   return studentsMark.marks.reduce((sum, current) => sum + current,0)/studentsMark.marks.length;
- }
-
-
-    function getAllMarks(students) {
-        return students.map(el => el.marks).flat(Infinity);
-    //    return allMarksArr.reduce((sum, current) => sum + current).split(',').map(Number);
-     
-     }
+function calculateStudentAverageMark({ marks }) {
+    if (!marks.length) return 0;
+   return marks.reduce((sum, current) => sum + current, 0)/marks.length;
+}
+ 
 function calculateGroupAverageMark() { 
-    return allMarks.reduce((total, amount) => total + amount)/allMarks.length
+    return students.reduce((sum, student) => sum + calculateStudentAverageMark(student), 0)
 }
  
 

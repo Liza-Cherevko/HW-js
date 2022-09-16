@@ -14,27 +14,11 @@
 
 function createCalculator(result) {
     return {
-    
-        add: function (val) {
-            result = result + val;
-            return result;
-          },
-          sub: function (val) {
-            result = result - val;
-            return result;
-          },
-        mul: function (val) {
-            result = result * val;
-            return result;
-        },
-        div: function (val) {
-            result = result / val;
-            return result;
-        },
-        set: function (val) {
-            result =  val;
-            return result;
-        },
+        add: (val) => result + val, 
+        sub: (val) => result - val,
+        mul: (val) => result * val,
+        div: (val) => result / val,
+        set: (val) =>result =  val,
         sum: function (...args) {
             result = result + args.reduce((pre, val) => {
               return pre+ val;

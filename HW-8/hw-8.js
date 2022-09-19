@@ -1,58 +1,43 @@
-let num1, num2;
-const actionBtn = document.querySelector('#action')
 
-actionBtn.addEventListener('click', calculate);
 
-function calculate(action) {
-    switch (action) {
+// const num1 = document.querySelector('#num1');
+// const num2 = document.querySelector('#num2');
+// const secect = document.querySelector('#action');
+// const act = document.querySelector('#res');
+// let result;
+
+let act;
+
+
+function calculate() {
+    let result;
+    let num1 = Number(document.getElementById("num1").value);
+    let num2 = Number(document.getElementById("num2").value);
+    switch(act){
         case '+':
-            return add;
+        result=num1+num2;
+        break;
         case '-':
-            return sub;
+        result=num1-num2;
+        break;
         case '*':
-            return mul;
+        result=num1*num2;
+        break;
         case '/':
-            return div;
-        default:
-            alert('Something wrong');
+        result=num1/num2;
+        break;
+    } 
+    document.getElementById("result").innerHTML = result;
+ }
 
-    }
-}
 
-function add() {
-     num1 = document.querySelector('#num1').value
-     num1 = parseInt(num1)
-     num2 = document.querySelector('#num2').value
-    num2 = parseInt(num2)
-    result = num1 + num2;
-    document.getElementById('out').innerHTML = result;
-    return result
-}
 
-function sub() { 
-    num1 = document.querySelector('#num1').value
-    num1 = parseInt(num1)
-    num2 = document.querySelector('#num2').value
-   num2 = parseInt(num2)
-   result = num1 - num2;
-   document.getElementById('out').innerHTML = result;
-   return result
-}
-function mul() { 
-    num1 = document.querySelector('#num1').value
-    num1 = parseInt(num1)
-    num2 = document.querySelector('#num2').value
-   num2 = parseInt(num2)
-   result = num1 * num2;
-   document.getElementById('out').innerHTML = result;
-   return result
-}
-function div() { 
-    num1 = document.querySelector('#num1').value
-    num1 = parseInt(num1)
-    num2 = document.querySelector('#num2').value
-   num2 = parseInt(num2)
-   result = num1 / num2;
-   document.getElementById('out').innerHTML = result;
-   return result
-}
+
+
+
+
+
+
+
+
+    

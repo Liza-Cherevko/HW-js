@@ -9,23 +9,16 @@
 </head>
 <body>
 
-    <p>число 1: <input type="text"  id="n1"></p>
-    <p>число 2: <input type="text"   id="n2"></p>
-
-
-
-
-    <select type="text" id="action">
-        <option value="+" >+</option>
-        <option  value="-">-</option>
-        <option  value="*">*</option>
-        <option  value="/">/</option>
+    <p>число 1: <input type="text"  id="num1"></p>
+    <p>число 2: <input type="text"   id="num2"></p>
+    <select name="select" id="action">
+        <option value = "+" onclick="act='+'">+</option>
+        <option value = "+" onclick="act='+'">-</option>
+        <option value = "+" onclick="act='+'">*</option>
+        <option value = "+" onclick="act='+'">/</option>
     </select>
-
-  
-  
-   <hr>
-  
-   <p id="out">Ответ:</p>
+    <button onclick="calculate()">Посчитать</button>
+    <hr>
+    <p id="result">Ответ:</p>
 </body>
 </html>

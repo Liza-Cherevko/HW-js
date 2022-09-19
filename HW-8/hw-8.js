@@ -2,9 +2,9 @@
 
 let calc = document.getElementById("calculate");
 
-calc.addEventListener("click", calc)
+calc.addEventListener("click", calculate)
 
-function calc(){
+function calculate(){
 let act = document.getElementById("action");
 act.addEventListener("change" , showAction())
     function add(){
@@ -12,7 +12,7 @@ act.addEventListener("change" , showAction())
         n1=document.getElementById("num1").value;
         n2=document.getElementById("num2").value;
         res=parseInt(n1)+parseInt(n2);
-        document.getElementById('out').innerHTML = result;
+        document.getElementById("result").value=res;
     }
 
     function sub(){
@@ -20,7 +20,7 @@ act.addEventListener("change" , showAction())
         n1=document.getElementById("num1").value;
         n2=document.getElementById("num2").value;
         res=parseInt(n1)-parseInt(n2);
-        document.getElementById('out').innerHTML = result;
+        document.getElementById("result").value=res;
     }
 
     function divide(){
@@ -28,7 +28,7 @@ act.addEventListener("change" , showAction())
         n1=document.getElementById("num1").value;
         n2=document.getElementById("num2").value;
         res=parseInt(n1) / parseInt(n2);
-        document.getElementById('out').innerHTML = result;
+        document.getElementById("result").value=res;
     }
 
     function mul(){
@@ -36,7 +36,7 @@ act.addEventListener("change" , showAction())
         n1=document.getElementById("num1").value;
         n2=document.getElementById("num2").value;
         res=parseInt(n1)*parseInt(n2);
-        document.getElementById('out').innerHTML = result;
+        document.getElementById("result").value=res;
     }
     
 
@@ -58,7 +58,7 @@ act.addEventListener("change" , showAction())
             mul()
             break;
     }
-}
+  }
 }
 
 

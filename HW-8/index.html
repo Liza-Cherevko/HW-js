@@ -8,17 +8,23 @@
     <title>Document</title>
 </head>
 <body>
+    <div style="text-align: center;margin: 10%; line-height: 40px;">
+        Number 1<input type="number" id="num1"><br>
+        Number 2<input type="number" id="num2"><br>
+     
+        <select id="action"  >
+            <option value="">Select an Operation</option>
+            <option value="add">Addition</option>
+            <option value="sub">Subtraction</option>
+            <option value="divide">Division</option>
+            <option value="mul">Multiplication</option>
+        </select><br>
 
-    <p>число 1: <input type="text"  id="num1"></p>
-    <p>число 2: <input type="text"   id="num2"></p>
-    <select name="select" id="action">
-        <option value = "+" onclick="act='+'">+</option>
-        <option value = "+" onclick="act='+'">-</option>
-        <option value = "+" onclick="act='+'">*</option>
-        <option value = "+" onclick="act='+'">/</option>
-    </select>
-    <button onclick="calculate()">Посчитать</button>
-    <hr>
-    <p id="result">Ответ:</p>
+        <hr>
+        <button id="calculate" onclick="calc()">  Calculate </button>
+        <p id="result">Result:</p>
+
+</div>
+
 </body>
 </html>

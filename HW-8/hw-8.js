@@ -1,34 +1,66 @@
 
 
-// const num1 = document.querySelector('#num1');
-// const num2 = document.querySelector('#num2');
-// const secect = document.querySelector('#action');
-// const act = document.querySelector('#res');
-// let result;
+let calc = document.getElementById("calculate");
 
-let act;
+calc.addEventListener("click", calc)
 
+function calc(){
+let act = document.getElementById("action");
+act.addEventListener("change" , showAction())
+    function add(){
+       let n1,n2,res;
+        n1=document.getElementById("num1").value;
+        n2=document.getElementById("num2").value;
+        res=parseInt(n1)+parseInt(n2);
+        document.getElementById('out').innerHTML = result;
+    }
 
-function calculate() {
-    let result;
-    let num1 = Number(document.getElementById("num1").value);
-    let num2 = Number(document.getElementById("num2").value);
-    switch(act){
-        case '+':
-        result=num1+num2;
-        break;
-        case '-':
-        result=num1-num2;
-        break;
-        case '*':
-        result=num1*num2;
-        break;
-        case '/':
-        result=num1/num2;
-        break;
-    } 
-    document.getElementById("result").innerHTML = result;
- }
+    function sub(){
+        let n1,n2,res;
+        n1=document.getElementById("num1").value;
+        n2=document.getElementById("num2").value;
+        res=parseInt(n1)-parseInt(n2);
+        document.getElementById('out').innerHTML = result;
+    }
+
+    function divide(){
+        let n1,n2,res;
+        n1=document.getElementById("num1").value;
+        n2=document.getElementById("num2").value;
+        res=parseInt(n1) / parseInt(n2);
+        document.getElementById('out').innerHTML = result;
+    }
+
+    function mul(){
+        let n1,n2,res;
+        n1=document.getElementById("num1").value;
+        n2=document.getElementById("num2").value;
+        res=parseInt(n1)*parseInt(n2);
+        document.getElementById('out').innerHTML = result;
+    }
+    
+
+    function showAction(){
+     switch(act.value){
+        case "add" :
+            add()
+            break;
+
+        case "sub" :
+            sub()
+            break;
+                
+        case "divide" :
+            divide()
+            break;
+                
+        case "mul":
+            mul()
+            break;
+    }
+}
+}
+
 
 
 

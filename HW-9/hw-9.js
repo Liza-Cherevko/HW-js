@@ -1,14 +1,14 @@
 const createTaskEl = document.querySelector('#createTask');
 const addTaskBtn = document.querySelector('#addTaskBtn');
 const taskslist = document.querySelector('#tasksList');
-
 addTaskBtn.addEventListener('click', addNewTodoList);
 
 function addNewTodoList() { 
     const newTaskValue = getNewTask();
     addNewTask(newTaskValue)
     resetForm()
-  
+    removeTask(addTaskDone)
+   
 }
 
 function getNewTask() { 
@@ -19,9 +19,9 @@ function getNewTask() {
 function addNewTask(){
     const NewliEl = document.createElement('li');
     const addTask = getNewTask();
-    NewliEl.classList.add('newCreateTask')
     NewliEl.append(addTask)
     taskslist.append(NewliEl)
+    addClassNewTask(NewliEl)
     addTaskDone(NewliEl)
 }
 
@@ -39,6 +39,11 @@ function addTaskDone(value) {
 })
 }
 
+function removeTask(value) { 
+    value.addEventListener('click', () => {
+        value.remove()
+                })
+    }
 
 
 

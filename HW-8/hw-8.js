@@ -13,18 +13,14 @@ function getCalc() {
     function add() { 
         return n1 + n2;
     }
-    function sub() { 
-     
+    function sub() {      
         return n1 - n2;
     }
-    function div() { 
-       
+    function div() {        
         return n1 / n2;
     }
-    function mul() { 
-      
-        return n1 * n2;
-        
+    function mul() {       
+        return n1 * n2;        
     }
 
     switch (act) { 

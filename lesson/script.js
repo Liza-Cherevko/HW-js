@@ -106,4 +106,3 @@ function resetValidation() {
         surnameEl.classList.remove('invalid-input')
         phoneEl.classList.remove('invalid-input')
 }
-newTaskStyle

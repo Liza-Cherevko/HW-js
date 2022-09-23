@@ -2,14 +2,6 @@ const input = document.querySelector('#input');
 const addTaskBtn = document.querySelector('#addTaskBtn');
 const result = document.querySelector('#result');
 
-
-function addNewTodoList() { 
-    // if (!validationTask()) { 
-    //     return;
-    // }
-    const newTaskValue = getNewTask();
-    addNewTask(newTaskValue)
-
 addTaskBtn.addEventListener('click', onAddTaskBtnclick)
 
 function onAddTaskBtnclick() {
@@ -51,22 +43,14 @@ function createAndDeleteInput(value) {
 function resetForm() { 
     input.value = '';
 }
-// function validationTask() { 
-//     resetForm()
-//     if (createTaskEl.value === '') { 
-//         taskslist.classList.add('invalid-input')
-//         return false
-//     };
 
-//  return true 
-// }
-function addClassNewTask(value) { 
-    value.classList.add('newCreateTask')
-}
-function addTaskDone(value) { 
+function taskDoneStyle(value) { 
     value.addEventListener('click', () => {
         value.classList.add('task-done')
 })
 }
+
+
+    
 
 

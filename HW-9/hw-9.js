@@ -4,9 +4,9 @@ const taskslist = document.querySelector('#tasksList');
 addTaskBtn.addEventListener('click', addNewTodoList);
 
 function addNewTodoList() { 
-    if (!validationTask()) { 
-        return;
-    }
+    // if (!validationTask()) { 
+    //     return;
+    // }
     const newTaskValue = getNewTask();
     addNewTask(newTaskValue)
     resetForm()
@@ -31,15 +31,15 @@ function addNewTask(){
 function resetForm() { 
     createTaskEl.value = '';
 }
-function validationTask() { 
-    resetForm()
-    if (createTaskEl.value === '') { 
-        taskslist.classList.add('invalid-input')
-        return false
-    };
+// function validationTask() { 
+//     resetForm()
+//     if (createTaskEl.value === '') { 
+//         taskslist.classList.add('invalid-input')
+//         return false
+//     };
 
- return true 
-}
+//  return true 
+// }
 function addClassNewTask(value) { 
     value.classList.add('newCreateTask')
 }

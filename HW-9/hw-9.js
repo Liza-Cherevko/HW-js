@@ -16,12 +16,14 @@ function getTaskValue() {
 
 function createAndDeleteInput(value) {
     const li = document.createElement('li')
-   
+    const spanEl = document.createElement('span')
     const btn = document.createElement('button')
     li.className = 'newCreateTask'
-    li.textContent = value
+    spanEl.textContent = value
+    // li.textContent = value
     btn.className = 'deleteBtn'
     btn.textContent = 'add'
+    li.append(spanEl)
     li.append(btn)
     btn.addEventListener('click', (e) => { 
         console.log(li)

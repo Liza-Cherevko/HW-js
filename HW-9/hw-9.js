@@ -6,6 +6,8 @@ addTaskBtn.addEventListener('click', onAddTaskBtnclick)
 
 function onAddTaskBtnclick() {
     const newInput = getTaskValue();
+    // isInputInvalid(newInput);
+    if(newInput==='') return
     createAndDeleteInput(newInput)
     resetForm()
 }
@@ -13,6 +15,9 @@ function onAddTaskBtnclick() {
 function getTaskValue() {
    return input.value   
 }
+// function isInputInvalid(value) { 
+//     if(value==='') return
+// }
 
 function createAndDeleteInput(value) {
     const li = document.createElement('li')

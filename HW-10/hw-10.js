@@ -27,9 +27,9 @@ function onFormSubmit(event){
 
 function onListClick(event){
     if (event.target.classList.contains(DELETE_BTN_CLASS)) {
-        deleteTodo(event.target.parentElement);
+        deleteContact(event.target.parentElement);
     } else if (event.target.classList.contains(TASK_ITEM_CLASS)) {
-        toggleTodo(event.target);
+        toggleContact(event.target);
     }
 }
 
@@ -87,10 +87,10 @@ function resetValidation() {
         phoneEl.classList.remove('invalid-input')
 }
 
-function toggleTodo(contactEl) {
+function toggleContact(contactEl) {
     contactEl.classList.toggle(TASK_DONE_CLASS);
 }
-function deleteTodo(todoEl) {
+function deleteContact(todoEl) {
     todoEl.remove();
 }
 

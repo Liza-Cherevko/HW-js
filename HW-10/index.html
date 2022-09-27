@@ -21,8 +21,10 @@
                 <th>Actions</th>
             </tr>
         </thead>
+        
         <tbody id="contactsList"></tbody>
-        <tfoot>
+        <form id="newContactForm">
+        <tfoot >
             <tr>
                 <td class =" task-item"><input id="name" placeholder="Contact name"   class="u-full-width" /></td>
                 <td class =" task-item"><input id="surname" placeholder="Contact surname"   class="u-full-width"/></td>
@@ -30,12 +32,13 @@
                 <td class =" task-item"><button id="addContactBtn">Add</button></td>
             </tr>
         </tfoot>
+     </form>
     </table>  
     <script type="text/template" id="newContactItemTemplate">
         <tr>
-         <td class =" task-item"> {title} <span class =" delete-btn"> x </span></td>
-         <td class =" task-item"> {title} <span class =" delete-btn"> x </span> </td>
-         <td class =" task-item"> {title} <span class =" delete-btn">  x </span> </td>
+         <td class =" task-item"> {{name}} <span class =" delete-btn"> x </span></td>
+         <td class =" task-item"> {{surname}} <span class =" delete-btn"> x </span> </td>
+         <td class =" task-item"> {{phone}} <span class =" delete-btn">  x </span> </td>
          <td> <button class=" delete-btn"> remove</button> </td>
         </tr>
     </script> 

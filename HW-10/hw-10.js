@@ -1,19 +1,38 @@
+const TASK_DONE_CLASS = 'done';
+const TASK_ITEM_CLASS = 'task-item';
+const DELETE_BTN_CLASS = 'delete-btn';
 const contactListEl = document.querySelector('#contactsList');
 const nameEl = document.querySelector('#name');
 const surnameEl = document.querySelector('#surname');
 const phoneEl = document.querySelector('#phone');
 const addBtnEl = document.querySelector('#addContactBtn');
+const newContactForm = document.querySelector('#newContactForm')
+let templateItem = document.querySelector('#newContactItemTemplate').innerHTML;
 
-addBtnEl.addEventListener('click', onAddcontactBtnclick)
 
-function onAddcontactBtnclick() { 
+
+newContactForm.addEventListener('submit', onFormSubmit);
+contactListEl.addEventListener('click', onListClick);
+
+
+function onFormSubmit(event){
+    event.preventDefault();
     if (!validateValues()) { 
-        return;
-    }
-    const newContact = getValues();
+    return;
+     }
+   const newContact = getValues();
     addContact(newContact)
-    resetForm()
+     resetForm()
 }
+
+function onListClick(event){
+    if (event.target.classList.contains(DELETE_BTN_CLASS)) {
+        deleteTodo(event.target.parentElement);
+    } else if (event.target.classList.contains(TASK_ITEM_CLASS)) {
+        toggleTodo(event.target);
+    }
+}
+
 
 function getValues() { 
     return {
@@ -29,20 +48,15 @@ function addContact(contact) {
 
 
 function generateContactFormHtml(contact) { 
-    let template = document.querySelector('#newContactItemTemplate').innerHTML;
-    template = template.replaceAll('{{title}}',contact)
-    console.log(template)
+   let template = templateItem
+    .replaceAll('{{name}}',contact.name)
+    .replaceAll('{{surname}}',contact.surname)
+    .replaceAll('{{phone}}',contact.phone);
     return template;
 }
 
 
-function createCell(value){
-    const tdEl = document.createElement('td');
 
-    tdEl.textContent = value;
-
-    return tdEl;
-}
 
 function resetForm() { 
     nameEl.value = '';
@@ -73,8 +87,12 @@ function resetValidation() {
         phoneEl.classList.remove('invalid-input')
 }
 
-
-
+function toggleTodo(contactEl) {
+    contactEl.classList.toggle(TASK_DONE_CLASS);
+}
+function deleteTodo(todoEl) {
+    todoEl.remove();
+}
 
 
 

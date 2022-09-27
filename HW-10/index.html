@@ -9,9 +9,9 @@
     <title>Document</title>
 </head>
 <body>
-     
 
 
+        
     <table>
         <thead>
             <tr>
@@ -24,15 +24,25 @@
         <tbody id="contactsList"></tbody>
         <tfoot>
             <tr>
-                <td><input id="name" placeholder="Contact name" /></td>
-                <td><input id="surname" placeholder="Contact surname" /></td>
-                <td><input id="phone" placeholder="Contact phone" /></td>
-                <td><button id="addContactBtn">Add</button></td>
+                <td class =" task-item"><input id="name" placeholder="Contact name"   class="u-full-width" /></td>
+                <td class =" task-item"><input id="surname" placeholder="Contact surname"   class="u-full-width"/></td>
+                <td class =" task-item"><input id="phone" placeholder="Contact phone"   class="u-full-width" /></td>
+                <td class =" task-item"><button id="addContactBtn">Add</button></td>
             </tr>
         </tfoot>
-    </table>        
-
+    </table>  
+    <script type="text/template" id="newContactItemTemplate">
+        <tr>
+         <td class =" task-item"> {title} <span class =" delete-btn"> x </span></td>
+         <td class =" task-item"> {title} <span class =" delete-btn"> x </span> </td>
+         <td class =" task-item"> {title} <span class =" delete-btn">  x </span> </td>
+         <td> <button class=" delete-btn"> remove</button> </td>
+        </tr>
+    </script> 
   
+        
+
+
 
 
 </body>

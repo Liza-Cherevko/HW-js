@@ -23,21 +23,19 @@ function getValues() {
     }
 }
 function addContact(contact) { 
-    const rowEl = generateContactElement(contact)
-
-    contactListEl.append(rowEl)
+    const contactHtml = generateContactFormHtml(contact) 
+    contactListEl.insertAdjacentHTML('beforeend', contactHtml)
 }
 
-function generateContactElement({name, surname, phone}){
-    const trEl = document.createElement('tr');
 
-    trEl.append(createCell(name))
-    trEl.append(createCell(surname))
-    trEl.append(createCell(phone))
-    trEl.append(createCell(''));
-
-    return trEl;
+function generateContactFormHtml(contact) { 
+    let template = document.querySelector('#newContactItemTemplate').innerHTML;
+    template = template.replaceAll('{{title}}',contact)
+    console.log(template)
+    return template;
 }
+
+
 function createCell(value){
     const tdEl = document.createElement('td');
 
@@ -77,6 +75,11 @@ function resetValidation() {
 
 
 
-    
+
+
+
+
+
+
 
 

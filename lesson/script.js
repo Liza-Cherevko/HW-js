@@ -70,6 +70,10 @@ function generateContactElement({name, surname, phone}){
 
     return trEl;
 }
+
+
+
+
 function createCell(value){
     const tdEl = document.createElement('td');
 

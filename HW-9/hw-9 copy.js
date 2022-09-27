@@ -10,14 +10,10 @@ const errorContainerEl = document.querySelector('#errorContainer');
 const taskITemTemplate = document.querySelector('#todoItemTemplate').innerHTML;
 
 newTaskForm.addEventListener('submit', onNewTaskFormSubmit);
-// submitBtn.addEventListener('click', onAddBtnClick);
 taskNameInput.addEventListener('input', onTaskNameInput);
 taskListEl.addEventListener('click', onListClick);
 
-addTodo({ title: 'Task 1' });
-addTodo({ title: 'Task 2' });
-addTodo({ title: 'Task 3' });
-addTodo({ title: 'Task 4' });
+
 
 function onListClick(event) {
     if (event.target.classList.contains(DELETE_BTN_CLASS)) {

@@ -26,20 +26,21 @@
         <form id="newContactForm">
         <tfoot >
             <tr>
-                <td class =" task-item"><input id="name" placeholder="Contact name"   class="u-full-width" /></td>
-                <td class =" task-item"><input id="surname" placeholder="Contact surname"   class="u-full-width"/></td>
-                <td class =" task-item"><input id="phone" placeholder="Contact phone"   class="u-full-width" /></td>
-                <td class =" task-item"><button id="addContactBtn">Add</button></td>
+                <td ><input id="name" placeholder="Contact name"   class="u-full-width" /></td>
+                <td ><input id="surname" placeholder="Contact surname"   class="u-full-width"/></td>
+                <td ><input id="phone" placeholder="Contact phone"   class="u-full-width" /></td>
+                <td ><button id="addContactBtn">Add</button></td>
             </tr>
         </tfoot>
      </form>
     </table>  
+    <div id="errorMsEl"></div>
     <script type="text/template" id="newContactItemTemplate">
         <tr>
-         <td class =" task-item"> {{name}} <span class =" delete-btn"> x </span></td>
-         <td class =" task-item"> {{surname}} <span class =" delete-btn"> x </span> </td>
-         <td class =" task-item"> {{phone}} <span class =" delete-btn">  x </span> </td>
-         <td> <button class=" delete-btn"> remove</button> </td>
+         <td class =" task-item"> {{name}}  </td>
+         <td class =" task-item"> {{surname}} </td>
+         <td class =" task-item"> {{phone}}  </td>
+         <td class=" delete-btn">  remove </td>
         </tr>
     </script> 
   

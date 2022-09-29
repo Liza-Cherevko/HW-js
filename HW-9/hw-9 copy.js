@@ -61,15 +61,6 @@ function generateTodoHtml(todo) {
     return taskITemTemplate.replaceAll('{{title}}', todo.title);
 }
 
-// function generateTodoElement(todo) {
-//     const divEl = document.createElement('div');
-
-//     divEl.classList.add(TASK_ITEM_CLASS);
-//     divEl.textContent = todo.title;
-
-//     return divEl;
-// }
-
 function resetForm() {
     taskNameInput.value = '';
 }

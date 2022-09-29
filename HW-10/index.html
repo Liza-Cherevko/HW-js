@@ -23,7 +23,7 @@
         </thead>
         <tbody id="contactsList"></tbody>
         <tfoot>
-            <tr>
+            <tr id="globalContactValue">
                 <td class =" task-item"><input id="name" placeholder="Contact name"   class="u-full-width" /></td>
                 <td class =" task-item"><input id="surname" placeholder="Contact surname"   class="u-full-width"/></td>
                 <td class =" task-item"><input id="phone" placeholder="Contact phone"   class="u-full-width" /></td>
@@ -31,11 +31,12 @@
             </tr>
         </tfoot>
     </table>  
+    <div  id="errorContainer"></div>
     <script type="text/template" id="newContactItemTemplate">
         <tr>
-         <td class =" task-item"> {title} <span class =" delete-btn"> x </span></td>
-         <td class =" task-item"> {title} <span class =" delete-btn"> x </span> </td>
-         <td class =" task-item"> {title} <span class =" delete-btn">  x </span> </td>
+         <td class =" task-item"> {{name}}<span class =" delete-btn"> x </span></td>
+         <td class =" task-item"> {{surname}} <span class =" delete-btn"> x </span> </td>
+         <td class =" task-item"> {{phone}} <span class =" delete-btn">  x </span> </td>
          <td> <button class=" delete-btn"> remove</button> </td>
         </tr>
     </script> 

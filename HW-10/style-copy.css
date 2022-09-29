@@ -1,0 +1,23 @@
+.highlighted {
+    background-color: green;
+    color: blue;
+  }
+  
+  .invalid-input {
+    background-color: red
+  }
+  .hidden {
+    display: none;
+  }
+  th td{
+    color: #fff;
+  }
+  tr{
+    color: #fff;
+  }
+  .btn{
+    color: #fff;
+  }
+  input{
+    color: black;
+  }

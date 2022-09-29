@@ -7,7 +7,7 @@ const taskNameInput = document.querySelector('#taskNameInput');
 const newTaskForm = document.querySelector('#newTaskForm');
 const errorContainerEl = document.querySelector('#errorContainer');
 
-const taskITemTemplate = document.querySelector('#todoItemTemplate').innerHTML;
+const todoItemTemplate = document.querySelector('#todoItemTemplate').innerHTML;
 
 newTaskForm.addEventListener('submit', onNewTaskFormSubmit);
 taskNameInput.addEventListener('input', onTaskNameInput);
@@ -58,7 +58,7 @@ function addTodo(todo) {
 }
 
 function generateTodoHtml(todo) {
-    return taskITemTemplate.replaceAll('{{title}}', todo.title);
+    return todoItemTemplate.replaceAll('{{title}}', todo.title);
 }
 
 function resetForm() {

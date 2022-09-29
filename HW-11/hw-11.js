@@ -1,5 +1,6 @@
+
 const TASK_ITEM_CLASS = 'task-item';
-const TASK_ITEM_ID = 'task-id';
+const TASK_ITEM_ID = 'task-item-id';
 const DELETE_BTN_CLASS = 'delete-btn';
 const TASK_DONE_CLASS = 'done';
 
@@ -30,9 +31,9 @@ function renderTasks(list) {
 
 function onListClick(e) {
     if (e.target.classList.contains(DELETE_BTN_CLASS)) {
-        const contactId = getContactId(e.target);
-        console.log(contactId)
-        deleteContact(contactId);
+        const taskId = getTaskItemId(e.target);
+        console.log(taskId)
+        deleteContact(taskId);
     }
     // } else if (e.target.classList.contains(TASK_ITEM_CLASS)) {
     //     toggleTodo(e.target);
@@ -104,11 +105,9 @@ function validateValue(value) {
         return true;
     }
 }
-function getContactId(elem) {
-    return +elem.closest(TASK_ITEM_CLASS).dataset.contactId;
+function getTaskItemId(elem) {
+    return +elem.closest(TASK_ITEM_ID).dataset.contactId;
 }
-// function getTaskItemId(elem) {
-//     return +elem.closest(TASK_ITEM_ID).dataset.contactId;
-    
-// }
-// console.log(e.target.classList.contains(TASK_ITEM_ID))
+
+
+

@@ -135,3 +135,6 @@ background-color:  rgb(40, 39, 39);;
   display: flex;
   gap: 13px;
 }
+.hidden{
+  display: none;
+}

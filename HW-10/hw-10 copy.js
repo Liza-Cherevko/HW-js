@@ -39,14 +39,14 @@ function onContactsListClick(e) {
         console.log(contactId)
         deleteContact(contactId);
     }
-    // if (e.target.classList.contains(EDIT_BTN_CLASS)) {
-    //     const contactId = getContactId(e.target);
-    //     const tr = e.target.closest(CONTACT_ITEM_CLASS);
-    //     tr.classList.add('hidden');
-    //     tr.insertAdjacentElement('afterend', formRowEl);
+    if (e.target.classList.contains(EDIT_BTN_CLASS)) {
+        const contactId = getContactId(e.target);
+        const tr = e.target.closest(CONTACT_ITEM_CLASS);
+        tr.classList.add('hidden');
+        tr.insertAdjacentElement('afterend', formRowEl);
 
-    //     editContact(contactId);
-    // }
+        editContact(contactId);
+    }
 }
 
 function onAddContactBtnClick() {

@@ -17,7 +17,7 @@ contactListEl.addEventListener('click', onListClick);
 
 
 function onTaskNameInput(){
-    validateValues()
+    validateValues(nameEl,surnameEl,phoneEl)
 }
 
 // function validateInput(){
@@ -45,20 +45,13 @@ function onTaskNameInput(){
 //     }
 // }
 
-function validateValues() { 
+function validateValues(value) {
     resetValidation()
-    if (nameEl.value === '') {
-        errorTxt(errorMsEl) 
+    if (value.value === '') {
+        errorTxt(errorMsEl)
         return false;
     }
-    if (surnameEl.value === '') {
-        errorTxt(errorMsEl) 
-        return false;
-    }
-    if (phoneEl.value === '' || isNaN(phoneEl.value)) {
-        errorTxt(errorMsEl) 
-        return false;
-    }else {
+    else {
         errorMsEl.textContent = '';
         addBtnEl.diabled = false;
         return true;

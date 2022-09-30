@@ -17,30 +17,46 @@ contactListEl.addEventListener('click', onListClick);
 
 
 function onTaskNameInput(){
-  vilidateInput()
-}
-function validateInput(){
-    const value = contactListEl.value;
-
-    return validateValues(value);
+    validateValues()
 }
 
+// function validateInput(){
+//     const value = contactListEl.value;
+
+//     return validateValues(value);
+// }
+
+
+// function validateValues() {
+//     resetValidation()
+//     if (errorTxt(nameEl)||errorTxt(surnameEl) || errorTxt(phoneEl) ) {
+//         return false;
+//     }
+//     else {
+//         errorMsEl.textContent = '';
+//         addBtnEl.diabled = false;
+//         return true;
+//     }
+// }
+// function errorTxt(title) {
+//     if (title.value === '') {
+//         errorMsEl.textContent = 'ERROR. Write down the contact';
+//         addBtnEl.diabled = true;
+//     }
+// }
 
 function validateValues() { 
     resetValidation()
     if (nameEl.value === '') {
-        errorMsEl.textContent = 'ERROR. Write down the contact\'s name.';
-        addBtnEl.diabled = true;
+        errorTxt(errorMsEl) 
         return false;
     }
     if (surnameEl.value === '') {
-        errorMsEl.textContent = 'ERROR. Write down the contact\'s surname.';
-        addBtnEl.diabled = true;
+        errorTxt(errorMsEl) 
         return false;
     }
     if (phoneEl.value === '' || isNaN(phoneEl.value)) {
-        errorMsEl.textContent = 'ERROR. Write down the contact\'s phone. Use only number.';
-        addBtnEl.diabled = true;
+        errorTxt(errorMsEl) 
         return false;
     }else {
         errorMsEl.textContent = '';
@@ -48,6 +64,12 @@ function validateValues() {
         return true;
     }
 }
+function errorTxt(title) {
+    title.textContent = 'fill in all required fields!Field "phone" number';
+    addBtnEl.diabled = true;
+}
+
+
 
 function getValues() { 
     return {
@@ -109,5 +131,3 @@ function resetValidation() {
 function toggleContact(contactEl) {
     contactEl.classList.toggle(TASK_DONE_CLASS);
 }
-
-

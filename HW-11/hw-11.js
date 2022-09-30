@@ -30,13 +30,8 @@ function onListClick(e) {
     const taskId = getTaskItemId(e.target);
     if (e.target.classList.contains(DELETE_BTN_CLASS)) {
         deleteTodo(taskId);
-    } else if (e.target.classList.contains(EDIT_BTN_CLASS)) {
-        const taskId = getTaskItemId(e.target);
-        const div = e.target.closest(CONTACT_ITEM_CLASS);
-        div.classList.add('hidden');
-        div.insertAdjacentElement('afterend', editForm);
-
-        editContact(taskId);
+    }  else if (e.target.classList.contains(EDIT_BTN_CLASS)) {
+        editTodo(taskId);
     }
     else if (e.target.classList.contains(TASK_ITEM_CLASS)) {
         toggleTodo(e.target);

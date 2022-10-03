@@ -19,9 +19,9 @@ taskNameInput.addEventListener('input', onTaskNameInput);
 taskListEl.addEventListener('click', onListClick);
 
 let list = [
-    { id: 1, title: 'Do something 1' },
-    { id: 2, title: 'Do something 2' },
-    { id: 3, title: 'Do something 3' }
+    { id: 1, title: 'Do something 1', isDone: false },
+    { id: 2, title: 'Do something 2', isDone: true},
+    { id: 3, title: 'Do something 3', isDone: true}
 ];
 
 init();
@@ -34,7 +34,7 @@ function onListClick(e) {
         editTodo(taskId);
     }
     else if (e.target.classList.contains(TASK_ITEM_CLASS)) {
-        toggleTodo(e.target);
+        toggleTodo(taskId);
     }
 }
 
@@ -65,10 +65,11 @@ function renderTodo(todo) {
     taskListEl.insertAdjacentHTML('beforeEnd', todoHtml);
 }
 
-function generateTodoHtml({id, title }) {
+function generateTodoHtml({id, title,isDone }) {
     return todoItemTemplate
-    .replaceAll('{{id}}', id)
-    .replaceAll('{{title}}',title);     
+        .replaceAll('{{id}}', id)
+        .replaceAll('{{title}}', title)
+        .replaceAll('{{doneClass}}', isDone ? TASK_DONE_CLASS : '');
 }
 function getFormData() {
     return {
@@ -88,7 +89,7 @@ function addTodo(todo) {
     list.push(todo);
     renderTasks(list)
 }
-function udateTodo(todo) { 
+function updateTodo(todo) { 
     list = list.map((item) => (item.id !== todo.id ? item : todo));
 
     renderTasks(list)
@@ -118,7 +119,11 @@ function deleteTodo(id) {
 
     renderTasks(list);
 }
-
+function toggleTodo(id) {
+    const todo = list.find((item) => item.id === id);
+    todo.isDone = !todo.isDone;
+    renderTasks(list);
+}
 function editTodo(id) { 
     const task = list.find((item) => item.id === id);
     fillForm(task);
@@ -139,6 +144,5 @@ function validateValue(value) {
 function getTaskItemId(elem) {
     return +elem.closest(TASK_ITEM_ID).dataset.taskId;
 }
-
 
 

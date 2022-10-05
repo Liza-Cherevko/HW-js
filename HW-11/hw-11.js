@@ -1,7 +1,8 @@
 
 const TASK_ITEM_CLASS = 'task-item';
-const TASK_ITEM_ID = 'task-item-id';
+const TASK_ITEM_ID = '.task-item-id';
 const DELETE_BTN_CLASS = 'delete-btn';
+const EDIT_BTN_CLASS = 'edit-btn';
 const TASK_DONE_CLASS = 'done';
 
 const taskListEl = document.querySelector('#taskList');
@@ -10,38 +11,32 @@ const newTaskForm = document.querySelector('#newTaskForm');
 const errorContainerEl = document.querySelector('#errorContainer');
 const todoItemTemplate = document.querySelector('#todoItemTemplate').innerHTML;
 const idEl = document.querySelector('#id');
+const formWrap = document.querySelector('#formWrap');
+const editForm = document.querySelector('#editForm');
 
 newTaskForm.addEventListener('submit', onNewTaskFormSubmit);
 taskNameInput.addEventListener('input', onTaskNameInput);
 taskListEl.addEventListener('click', onListClick);
 
 let list = [
-    { id: 1, title: 'Do something 1' },
-    { id: 2, title: 'Do something 2' },
-    { id: 3, title: 'Do something 3' }
+    { id: 1, title: 'Do something 1', isDone: false },
+    { id: 2, title: 'Do something 2', isDone: true},
+    { id: 3, title: 'Do something 3', isDone: true}
 ];
+
 init();
 
-function init() { 
-    renderTasks(list);
-}
-function renderTasks(list) { 
-   list.forEach(addTodo)
-}
-
 function onListClick(e) {
+    const taskId = getTaskItemId(e.target);
     if (e.target.classList.contains(DELETE_BTN_CLASS)) {
-        const taskId = getTaskItemId(e.target);
-        console.log(taskId)
-        deleteContact(taskId);
+        deleteTodo(taskId);
+    }  else if (e.target.classList.contains(EDIT_BTN_CLASS)) {
+        editTodo(taskId);
     }
-    // } else if (e.target.classList.contains(TASK_ITEM_CLASS)) {
-    //     toggleTodo(e.target);
-    // }
+    else if (e.target.classList.contains(TASK_ITEM_CLASS)) {
+        toggleTodo(taskId);
+    }
 }
-
-
-
 
 function onNewTaskFormSubmit(e) {
     e.preventDefault();
@@ -49,12 +44,55 @@ function onNewTaskFormSubmit(e) {
     if (!validateInput()) return;
 
     const newTodo = getFormData();
-    addTodo(newTodo);
+    saveTodo(newTodo);
     resetForm();
 }
 
 function onTaskNameInput() {
     validateInput();
+}
+
+function init() { 
+    renderTasks(list);
+}
+
+function renderTasks(list) { 
+    taskListEl.innerHTML = '';
+   list.forEach(renderTodo)
+}
+function renderTodo(todo) {
+    const todoHtml = generateTodoHtml(todo);
+    taskListEl.insertAdjacentHTML('beforeEnd', todoHtml);
+}
+
+function generateTodoHtml({id, title,isDone }) {
+    return todoItemTemplate
+        .replaceAll('{{id}}', id)
+        .replaceAll('{{title}}', title)
+        .replaceAll('{{doneClass}}', isDone ? TASK_DONE_CLASS : '');
+}
+function getFormData() {
+    return {
+        id: +idEl.value,
+        title: taskNameInput.value,
+    };
+}
+function saveTodo(todo) { 
+    if (todo.id === 0) {
+        addTodo(todo);
+    } else { 
+        udateTodo(todo);
+    }
+}
+function addTodo(todo) { 
+    todo.id = Date.now();
+    list.push(todo);
+    renderTasks(list)
+}
+function updateTodo(todo) { 
+    list = list.map((item) => (item.id !== todo.id ? item : todo));
+
+    renderTasks(list)
 }
 
 function validateInput() {
@@ -63,34 +101,32 @@ function validateInput() {
     return validateValue(value);
 }
 
-function getFormData() {
-    return {
-        id: idEl.value,
-        title: taskNameInput.value,
-    };
-}
-
-function addTodo(todo) {
-    const todoHtml = generateTodoHtml(todo);
-    taskListEl.insertAdjacentHTML('beforeEnd', todoHtml);
-}
-
-function generateTodoHtml({id, title }) {
-    return todoItemTemplate
-    .replaceAll('{{id}}', id)
-    .replaceAll('{{title}}',title);     
-}
-
 function resetForm() {
     taskNameInput.value = '';
+    idEl.value = '';
+}
+function fillForm({id, title }) {
+    idEl.value = id;
+    taskNameInput.value = title;
 }
 
 function toggleTodo(todoEl) {
     todoEl.classList.toggle(TASK_DONE_CLASS);
 }
 
-function deleteTodo(todoEl) {
-    todoEl.remove();
+function deleteTodo(id) {
+    list = list.filter((item) => item.id !== id);
+
+    renderTasks(list);
+}
+function toggleTodo(id) {
+    const todo = list.find((item) => item.id === id);
+    todo.isDone = !todo.isDone;
+    renderTasks(list);
+}
+function editTodo(id) { 
+    const task = list.find((item) => item.id === id);
+    fillForm(task);
 }
 
 function validateValue(value) {
@@ -106,8 +142,7 @@ function validateValue(value) {
     }
 }
 function getTaskItemId(elem) {
-    return +elem.closest(TASK_ITEM_ID).dataset.contactId;
+    return +elem.closest(TASK_ITEM_ID).dataset.taskId;
 }
-
 
 

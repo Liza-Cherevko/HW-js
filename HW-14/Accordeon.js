@@ -9,17 +9,27 @@ constructor(el){
 }
 
 #bindEventListeners(){
-    for (let i = 0; i < this.#boxElem.length; i++) {
-        this.#boxElem.length[i].addEventListener("click", function() {
-          this.classList.toggle("active");
-          let panel = this.nextElementSibling;
-          if (panel.style.display === "block") {
-            panel.style.display = "none";
-          } else {
-            panel.style.display = "block";
-          }
-        });
-      }
-  }
-  
+    this.#boxElem.addEventListener('click', (e) => {
+        if (e.target.classList.contains('accordeon-title')) {
+            const index = this.#findTitleIndex(e.target);
+
+            this.show(index);
+        }
+    });
+}
+#findTitleIndex(accElem){
+    for (let i = 0; i < this.#boxElem.children.length; i++) {
+        if (this.#boxElem.children[i] === accElem) {
+            return i;
+        }
+    }
+
+    return null;
+}
+show(index) {
+    if (!this.#boxElem.children[index]) {
+        return;
+    }
+
+}
 }

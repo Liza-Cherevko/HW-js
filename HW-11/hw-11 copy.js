@@ -29,10 +29,26 @@ function onNewTaskFormSubmit(e){
      e.preventDefault();
    const newTask = getFormValues();
    addTodo(newTask)
-  
+   resetForm()
 }
 
+function onTaskListElClick(e){
+    const todoId =  getTodoId(e.target)
+    // if(e.target.classList.contains(DELETE_BTN_CLASS)){
+    //    deleteTodo(todoId);
+    // }
+    // if(e.target.classList.contains(TASK_ITEM_CLASS)){
+    //    toggleTodo(todoId)
+    // }
 
+  switch(true){
+        case e.target.classList.contains(DELETE_BTN_CLASS):
+           return deleteTodo(todoId); 
+        case e.target.classList.contains(TASK_ITEM_CLASS):
+           return toggleTodo(todoId) ;
+  }
+
+   }
 
 function renderList(list){
 //   const htmls = list.map(generateTodoItemHtml);
@@ -56,23 +72,13 @@ function getFormValues(){
 function addTodo(todo){
     todo.id = Date.now();
     todo.isDone = false;
-    todoList.push(todo)
+    // todoList.push(todo)
+    todoList = [...todoList, todo]
     renderList(todoList)
-    resetForm()
+  
 }
 function resetForm(){
     taskNameInput.value = '';
-}
-
-function onTaskListElClick(e){
- if(e.target.classList.contains(DELETE_BTN_CLASS)){
-   const todoId =  getTodoId(e.target)
-    deleteTodo(todoId);
- }
- if(e.target.classList.contains(TASK_ITEM_CLASS)){
-    const todoId =  getTodoId(e.target)
-    toggleTodo(todoId)
- }
 }
 
 function deleteTodo(id){
@@ -80,8 +86,15 @@ function deleteTodo(id){
  renderList(todoList)
 }
 function toggleTodo(id){
-       const todo = todoList.find((item) =>item.id === id);
-  todo.isDone = !todo.isDone;
+//        const todo = todoList.find((item) =>item.id === id);
+//   todo.isDone = !todo.isDone;
+// const updatedTodo = {
+//     ...todo,
+//     isDone: !todo.isDone,
+// }
+todoList = todoList.map((item)=> item.id !== id
+ ? item : {...item, isDone: !item.isDone});
+
   renderList(todoList)
 }
 function getTodoId(el){

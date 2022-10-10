@@ -1,22 +1,101 @@
+// мой вариант
 
 
-function Person(name) {
-    this.name = name;
-    this.sayHi = function () {
-        console.log('hi', this.name)
-    }
+function Hamburger(size) {
+ this.size = size;
+ this.topping =[];
+}
+Hamburger.SIZE_SMALL= { price: 50, callories: 20};
+Hamburger.SIZE_AVARAGE= { price: 75, callories: 30 };
+Hamburger.SIZE_LARGE= { price: 100, callories: 50};
+Hamburger.TOPPING_CHEESE= { price: 10, callories: 20};
+Hamburger.TOPPING_SALAD= {price: 20, callories: 5};
+Hamburger.TOPPING_POTATO= { price: 15, callories: 10};
+Hamburger.TOPPING_MAYO={ price: 20, callories: 5};
+Hamburger.TOPPING_SPICE = { price: 15, callories: 0 };
+
+Hamburger.prototype.addTopping = function (topping) {
+   this.topping.push(topping)
+};
+
+Hamburger.prototype.getPrice = function () {
+ return  this.topping.reduce((acc, {price})=> (acc+=price),this._size.price )
+
+};
+
+Hamburger.prototype.getCallories = function () {
+  return this._toppings.reduce((acc, { callories}) => (acc+=callories), this._size.callories);
 }
 
-function Student(name) {
-    this.name = name;
-}
+let ham = new Hamburger(Hamburger.SIZE_LARGE);
 
-Student.prototype = new Person();
-Student.prototype.study=function () {
-    console.log('study', this.name)
-}
+ham.addTopping(Hamburger.TOPPING_MAYO);
+ham.addTopping( Hamburger.TOPPING_SALAD);
 
-const alex = new Student('Alex');
-const bob = new Student('bob');
+console.log('Current price:'+ ham.getPrice());
+console.log('Current callories:'+ ham.getCallories());
 
 
+
+// первый вариант решения
+// const SIZE_SMALL = { price: 50, callories: 20 };
+// const SIZE_BIG = { price: 100, callories: 50 };
+// const TOPPING_MAYO = { price: 20, callories: 5000 };
+// const TOPPING_KETCHUP = { price: 30, callories: 500 };
+
+
+// function Hamburger({ price, callories}) {
+//   this._price = price;
+//   this._callories = callories;
+// }
+
+// Hamburger.prototype.addTopping = function ({ price, callories }) {
+//   this._price += price;
+//   this._callories += callories;
+// }
+
+// Hamburger.prototype.getPrice = function () {
+//   return this._price;
+// }
+// Hamburger.prototype.getCallories = function () {
+//   return this._callories;
+// }
+
+// const ham = new Hamburger(SIZE_BIG)
+
+
+
+
+// второй вариант решения
+
+// function Hamburger(size ) {
+//   this._size = size;
+//   this._toppings = [];
+// }
+// Hamburger.SIZE_SMALL= { price: 50, callories: 20};
+// Hamburger.SIZE_AVARAGE= { price: 75, callories: 30 };
+// Hamburger.SIZE_LARGE= { price: 100, callories: 50};
+// Hamburger.TOPPING_CHEESE= { price: 10, callories: 20};
+// Hamburger.TOPPING_SALAD= {price: 20, callories: 5};
+// Hamburger.TOPPING_POTATO= { price: 15, callories: 10};
+// Hamburger.TOPPING_MAYO={ price: 20, callories: 5};
+// Hamburger.TOPPING_SPICE = { price: 15, callories: 0 };
+
+// Hamburger.prototype.addTopping = function (topping) {
+//  this._toppings.push(topping)
+// }
+
+// Hamburger.prototype.getPrice = function () {
+//   // let price = 0;
+//   // price = +this._size.price;
+//   // this._toppings.forEach((topping) => (price += topping.price));
+//   return this._toppings.reduce((acc, { price}) => (acc+=price), this._size.price);
+ 
+
+// }
+// Hamburger.prototype.getCallories = function () {
+//   return this._toppings.reduce((acc, { callories}) => (acc+=callories), this._size.callories);
+// }
+
+// const ham = new Hamburger(Hamburger.SIZE_LARGE)
+// ham.addTopping(Hamburger.TOPPING_MAYO)

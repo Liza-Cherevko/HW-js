@@ -1,17 +1,54 @@
+*,
+*::after,
+*::before{
+  box-sizing: inherit;
+}
+body{
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  width: 100%;
+  min-height: 100hv;
+  background-color: #b6b6b6;
+  display: flex;
+  justify-content: center;
+}
 .container{
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
+   padding: 30px;
+   max-width: 800px;
+}
+.container .accordeon-item{
+  position: relative;
+  margin-bottom: 30px;
+}
+.container .accordeon-item .accordeon-title{
+  position: relative;
+  padding: 20px;
+  background-color: #487f7f;
+  color: #fff;
+  cursor: pointer;
+}
+.container .accordeon-item .accordeon-title::after{
+  content: '+';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  font-size: 25px;
+  font-weight: bold;
+}
+.container .accordeon-item.active .accordeon-title::after{
+  content: '\2014';
+
 }
 
-.accordeon-item{
-    width: 100%;
-    background: beige;
-    border-radius: 5px;
-    border: 1px solid grey;
-    padding: 15px;
+.container .accordeon-item .accordeon-content{
+  position: reletive;
+  background: #fff;
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.3s;
 }
-
-.accordeon-body{
-  display: none;
+.container .accordeon-item .accordeon-content p{
+  padding: 20px;
 }

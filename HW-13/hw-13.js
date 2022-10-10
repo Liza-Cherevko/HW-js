@@ -3,7 +3,7 @@
 
 function Hamburger(size) {
  this.size = size;
- this.topping =[];
+ this.toppings =[];
 }
 Hamburger.SIZE_SMALL= { price: 50, callories: 20};
 Hamburger.SIZE_AVARAGE= { price: 75, callories: 30 };
@@ -15,16 +15,16 @@ Hamburger.TOPPING_MAYO={ price: 20, callories: 5};
 Hamburger.TOPPING_SPICE = { price: 15, callories: 0 };
 
 Hamburger.prototype.addTopping = function (topping) {
-   this.topping.push(topping)
+   this.toppings.push(topping)
 };
 
 Hamburger.prototype.getPrice = function () {
- return  this.topping.reduce((acc, {price})=> (acc+=price),this._size.price )
+ return  this.toppings.reduce((acc, {price})=> (acc+=price),this.size.price )
 
 };
 
 Hamburger.prototype.getCallories = function () {
-  return this._toppings.reduce((acc, { callories}) => (acc+=callories), this._size.callories);
+  return this.toppings.reduce((acc, { callories}) => (acc+=callories), this.size.callories);
 }
 
 let ham = new Hamburger(Hamburger.SIZE_LARGE);

@@ -1,0 +1,17 @@
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.accordeon-item{
+    width: 100%;
+    background: beige;
+    border-radius: 5px;
+    border: 1px solid grey;
+    padding: 15px;
+}
+
+.accordeon-body{
+  display: none;
+}

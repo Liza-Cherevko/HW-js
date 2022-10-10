@@ -1,0 +1,1 @@
+const accordeon = new Accordeon (document.querySelector('.container'));

@@ -47,32 +47,41 @@ console.log('Current callories:'+ ham.getCallories());
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-// function Hamburger(size){
-//   this.size = size;
-//   let topping = [];
+// замикання
+// function userBilder(name, age){
+//   let user = {name, age};
+//   return{
+//       getName(){
+//           return user.name
+//       },
+//       getAge(){
+//              return user.age
+//       },
+//   }
 // }
 
-// function Topping({price, callories}){
-//     let resultTop = {price, callories}
-//     console.log(resultTop)
-//     this.addTopping = function(val){
-//         return result+= val  
-//     }
+// let builder = userBilder('Liza', 22)
+
+
+// конструктор, prototype call apply bind
+// function User(name, age, status,wifeName,wifeAge){
+//   this.name = name;
+//   this.age = age;
+//   this.status = status;
+//   this.wife = {name: wifeName, age:wifeAge}
+//   console.log(this)
+// }
+// let user1 = new User('Liza', 22, true, 'anna', 22)
+
+// function User(name, age, ){
+//   this.name = name;
+//   this.age = age;
+//   console.log(this)
+// }
+// User.prototype.greeting = function() {
+//  return `hi my name is ${this.name}`
+
 // }
 
-// Hamburger.prototype = new Topping();
-// Hamburger.prototype.addTopping = function(){
-//     console.log('study', this.name)
-// }
+// let user = new User('Liza', 22, true, 'anna', 22)
+// console.log(user.greeting())

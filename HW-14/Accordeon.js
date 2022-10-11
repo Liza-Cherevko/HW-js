@@ -1,35 +1,40 @@
 class Accordeon {
-  #el = null;
- #boxElem = document.querySelectorAll('.accordeon-item ')
-
-constructor(el){
-    this.#el = el;
-    this.#bindEventListeners()
-    this.show(0);
-}
-
-#bindEventListeners(){
-    this.#boxElem.addEventListener('click', (e) => {
-        if (e.target.classList.contains('accordeon-title')) {
-            const index = this.#findTitleIndex(e.target);
-
-            this.show(index);
-        }
-    });
-}
-#findTitleIndex(accElem){
-    for (let i = 0; i < this.#boxElem.children.length; i++) {
-        if (this.#boxElem.children[i] === accElem) {
-            return i;
-        }
+    #el = null;
+    static accItem = Array.from(document.querySelectorAll('.accordeon-item'));
+    constructor(el) {
+        this.#el = el;
+        this.#getElem()
+    
     }
-
-    return null;
-}
-show(index) {
-    if (!this.#boxElem.children[index]) {
-        return;
+    
+    #getElem() { 
+        Accordeon.accItem.forEach((item) => {
+            item.addEventListener('click', (e) => { 
+                let currentAcc = e.target.closest('.accordeon-item');
+        let currentContent = e.target.nextElementSibling;
+           currentAcc.classList.toggle('active');
+           if (currentAcc.classList.contains('active')) {
+               currentContent.style.maxHeight = currentContent.scrollHeight + 'px';
+           } else { 
+            currentContent.style.maxHeight = 0
+           }
+            })
+});
     }
+}
 
-}
-}
+// const accItem = Array.from(document.querySelectorAll('.accordeon-item'));
+// accItem.forEach((item) => {
+//     item.addEventListener('click', titleHandler)
+// });
+//        function titleHandler(e) {
+//         e.preventDefault();
+//         let currentAcc = e.target.closest('.accordeon-item');
+//         let currentContent = e.target.nextElementSibling;
+//            currentAcc.classList.toggle('active');
+//            if (currentAcc.classList.contains('active')) {
+//                currentContent.style.maxHeight = currentContent.scrollHeight + 'px';
+//            } else { 
+//             currentContent.style.maxHeight = 0
+//            }
+//     } 

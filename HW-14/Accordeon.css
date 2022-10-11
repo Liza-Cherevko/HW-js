@@ -17,18 +17,18 @@ body{
    padding: 30px;
    max-width: 800px;
 }
-.container .accordeon-item{
+ .accordeon-item{
   position: relative;
   margin-bottom: 30px;
 }
-.container .accordeon-item .accordeon-title{
+ .accordeon-item .accordeon-title{
   position: relative;
   padding: 20px;
   background-color: #487f7f;
   color: #fff;
   cursor: pointer;
 }
-.container .accordeon-item .accordeon-title::after{
+ .accordeon-item .accordeon-title::after{
   content: '+';
   position: absolute;
   top: 50%;
@@ -37,18 +37,25 @@ body{
   font-size: 25px;
   font-weight: bold;
 }
-.container .accordeon-item.active .accordeon-title::after{
+.accordeon-item.active .accordeon-title::after{
   content: '\2014';
 
 }
 
-.container .accordeon-item .accordeon-content{
+.accordeon-item .accordeon-content{
   position: reletive;
   background: #fff;
   overflow: hidden;
   max-height: 0;
   transition: 0.3s;
 }
-.container .accordeon-item .accordeon-content p{
+ .accordeon-item .accordeon-content p{
   padding: 20px;
+}
+
+ .accordeon-title.accordeon-title-active{
+  background-color: grey;
+}
+.accordeon-title.accordeon-content-active{
+ display: block;
 }

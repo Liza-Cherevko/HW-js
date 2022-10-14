@@ -22,9 +22,9 @@ surnameEl.addEventListener('input', onInputInput);
 phoneEl.addEventListener('input', onInputInput);
 
 let list = [
-    { id: 1, name: 'Alex', surname: 'Smith', phone: '111111' },
-    { id: 2, name: 'Bob', surname: 'Jones', phone: '2222' },
-    { id: 3, name: 'John', surname: 'Snow', phone: '33333' },
+    // { id: 1, name: 'Alex', surname: 'Smith', phone: '111111' },
+    // { id: 2, name: 'Bob', surname: 'Jones', phone: '2222' },
+    // { id: 3, name: 'John', surname: 'Snow', phone: '33333' },
 ];
 
 init();
@@ -61,7 +61,16 @@ function onAddContactBtnClick() {
 }
 
 function init() {
+    
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then((res)=> res.json())
+    .then((data)=>{
+        list = data
+        renderContacts(list);
+    });
+   
     renderContacts(list);
+  
 }
 
 function renderContacts(list) {
@@ -75,11 +84,11 @@ function renderContact(contact) {
     contactsListEl.insertAdjacentHTML('beforeend', contactHtml);
 }
 
-function getContactHtml({ id, name, surname, phone }) {
+function getContactHtml({ id, name, username , phone }) {
     return contactTemplate
         .replaceAll('{{id}}', id)
         .replaceAll('{{name}}', name)
-        .replaceAll('{{surname}}', surname)
+        .replaceAll('{{surname}}', username  )
         .replaceAll('{{phone}}', phone);
 }
 

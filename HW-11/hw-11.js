@@ -81,7 +81,7 @@ function saveTodo(todo) {
     if (todo.id === 0) {
         addTodo(todo);
     } else { 
-        udateTodo(todo);
+        updateTodo(todo);
     }
 }
 function addTodo(todo) { 

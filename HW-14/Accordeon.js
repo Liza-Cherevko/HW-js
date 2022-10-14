@@ -27,49 +27,8 @@ class Accordeon {
     }
 }
 
-// class Accordeon {
-//     #el = null;
-//     #accItem = null; 
-//     constructor(el) {
-//         this.#el = el;
-//         this.#bindEventListeners();
-//         this.show(0);
-//     }
 
-//     #bindEventListeners() {
-//         this.#accItem = document.querySelectorAll('.accordeon-item');
-//         this.#accItem.addEventListener('click', (e) => {
-//             if (e.target.classList.contains('accordeon-content')) {
-//                 const index = this.#findTitleIndex(e.target);
 
-//                 this.show(index);
-//             }
-//         });
-//     }
-//     #findTitleIndex(accEl) {
-//         for (let i = 0; i < Accordeon.accItem.children.length; i++) {
-//             if (Accordeon.accItem.children[i] === accEl) {
-//                 return i;
-//             }
-//         }
-
-//         return null;
-//     }
-//     show(index) {
-//         if (!Accordeon.accItem.children[index]) {
-//             return;
-//         }
-//         this.#hideAll();
-
-//        Accordeon.accItem[index].classList.add('active');
-//     }
-    
-// #hideAll() {
-//     const visible = this.#el.querySelectorAll('.active');
-
-//     visible.forEach((el) => el.classList.remove('active'));
-// }
-// }
 
 
 

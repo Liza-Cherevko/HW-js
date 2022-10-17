@@ -127,9 +127,19 @@ fetch(API_URL, {
 }
 
 function updateContact(contact) {
-    list = list.map((item) => (item.id !== contact.id ? item : contact));
+    // list = list.map((item) => (item.id !== contact.id ? item : contact));
+    // renderContacts(list);
 
-    renderContacts(list);
+    fetch(API_URL + id, {
+        method: 'PUT',
+        body: JSON.stringify(contact),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    }).then(() => { 
+        list = list.map((item) => (item.id !== id ? item : contact));
+        renderContacts(list);
+    })
 }
 
 function resetForm() {
@@ -190,17 +200,8 @@ function getContactId(elem) {
 function editContact(id) {
     currentId = id;
     const contact = list.find((item) => item.id === id);
-    const updateContact = {
-        ...contact,
-    }
+
     fillForm(contact);
-        fetch(API_URL + id, {
-        method: 'PUT',
-        body: JSON.stringify(updateContact),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    }).then(() =>  fillForm(contact)  )
 }
 
 

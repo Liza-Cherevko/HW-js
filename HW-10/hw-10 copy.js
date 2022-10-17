@@ -116,6 +116,8 @@ function addContact(contact) {
     renderContacts(list);
 }
 
+
+
 function updateContact(contact) {
     list = list.map((item) => (item.id !== contact.id ? item : contact));
 
@@ -169,6 +171,7 @@ function deleteContact(id) {
     renderContacts(list);
 }
 
+
 function getContactId(elem) {
     return +elem.closest(CONTACT_ITEM_CLASS).dataset.contactId;
 }
@@ -178,4 +181,5 @@ function editContact(id) {
     const contact = list.find((item) => item.id === id);
 
     fillForm(contact);
+     
 }

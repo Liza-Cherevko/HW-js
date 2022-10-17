@@ -126,20 +126,34 @@ fetch(API_URL, {
     })
 }
 
-function updateContact(contact) {
-    // list = list.map((item) => (item.id !== contact.id ? item : contact));
-    // renderContacts(list);
 
+
+function updateContact({ id, name, surname, email }) {
+    const item = list.find((item) => item.id === id);
+    const updatedItem = {
+        ...item,
+        id: +idEl.value,
+        name: nameEl.value,
+        surname: surnameEl.value,
+        email: emailEl.value,
+    };
     fetch(API_URL + id, {
         method: 'PUT',
-        body: JSON.stringify(contact),
+        body: JSON.stringify(updatedItem),
         headers: {
             'Content-Type': 'application/json',
         },
     }).then(() => { 
-        list = list.map((item) => (item.id !== id ? item : contact));
-        renderContacts(list);
+        list = list.map((item) => (item.id !== id ? item : updatedItem));
+       renderContacts(list);
     })
+
+}
+function editContact(id) {
+    currentId = id;
+    const contact = list.find((item) => item.id === id);
+
+    fillForm(contact);
 }
 
 function resetForm() {
@@ -197,11 +211,6 @@ function getContactId(elem) {
     return parent ? parent.dataset.contactId : null;
 }
 
-function editContact(id) {
-    currentId = id;
-    const contact = list.find((item) => item.id === id);
 
-    fillForm(contact);
-}
 
 

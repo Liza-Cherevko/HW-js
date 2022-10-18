@@ -121,9 +121,10 @@ fetch(API_URL, {
         }
     }).then((res) => res.json())
      .then((data) => { 
-        list = [...list, data];
-        renderContacts(list);
-    })
+         list = [...list, data];
+         renderContacts(list);
+     })
+    
 }
 
 
@@ -145,10 +146,14 @@ function updateContact({ id, name, surname, email }) {
         },
     }).then(() => { 
         list = list.map((item) => (item.id !== id ? item : updatedItem));
-       renderContacts(list);
+        renderContacts(list);
     })
-
+    renderContacts(list);
 }
+
+
+
+
 function editContact(id) {
     currentId = id;
     const contact = list.find((item) => item.id === id);

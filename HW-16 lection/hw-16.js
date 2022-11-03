@@ -20,7 +20,7 @@ contactsListEl.addEventListener('click', onContactsListClick);
 nameEl.addEventListener('input', onInputInput);
 surnameEl.addEventListener('input', onInputInput);
 emailEl.addEventListener('input', onInputInput);
-
+ const contactsApi = new RestApi(API_URL)
 let list = [];
 
 init();
@@ -60,8 +60,7 @@ function init() {
 }
 
 function fetchContacts() { 
-    return fetch(API_URL)
-    .then((res)=> res.json())
+    contactsApi.getList()
     .then((data)=>{
         list = data
         renderContacts(list);
@@ -109,22 +108,20 @@ function addContact(contact) {
     // contact.id = Date.now();
     // list.push(contact);
 delete contact.id
-fetch(API_URL, {
-        method: 'POST',
-        body: JSON.stringify(contact),
-        headers: {
-            'Content-Type': 'application/json',
-        }
-    }).then((res) => res.json())
-     .then((data) => { 
+// fetch(API_URL, {
+//         method: 'POST',
+//         body: JSON.stringify(contact),
+//         headers: {
+//             'Content-Type': 'application/json',
+//         }
+//     }).then((res) => res.json())
+contactsApi.create(contact).then((data) => { 
         //  list = [...list, data];
         list.push(data);
          renderContacts(list);
      })
     
 }
-
-
 
 function updateContact(contact) {
     const item = list.find((item) => item.id === id);
@@ -135,20 +132,11 @@ function updateContact(contact) {
         surname: surnameEl.value,
         email: emailEl.value,
     };
-    fetch(API_URL + contact.id, {
-        method: 'PUT',
-        body: JSON.stringify(updatedItem),
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    }).then(() => { 
+   contactsApi.update(contact).then(() => { 
         list = list.map((item) => (item.id !== contact.id ? item : updatedItem));
         renderContacts(list);
     })
 }
-
-
-
 
 function editContact(id) {
     currentId = id;
@@ -199,12 +187,16 @@ function resetInputValidation(input) {
 }
 
 function deleteContact(id) {
-    fetch(API_URL + id, {
-        method:'DELETE'
-    }).then(() => { 
-        list = list.filter((item) => item.id !== id);
-        renderContacts(list)
-    })
+    contactsApi.delete(id).then(() => { 
+            list = list.filter((item) => item.id !== id);
+            renderContacts(list)
+        })
+    // fetch(API_URL + id, {
+    //     method:'DELETE'
+    // }).then(() => { 
+    //     list = list.filter((item) => item.id !== id);
+    //     renderContacts(list)
+    // })
    
  
 }
@@ -213,6 +205,7 @@ function getContactId(elem) {
    const parent = elem.closest(CONTACT_ITEM_CLASS);
     return parent ? parent.dataset.contactId : null;
 }
+
 
 
 

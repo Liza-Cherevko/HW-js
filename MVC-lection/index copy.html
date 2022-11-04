@@ -8,14 +8,24 @@
         <link rel="stylesheet" href="../common-css/skeleton.css" />
         <link rel="stylesheet" href="../common-css/dark-theme.css" />
         <link rel="stylesheet" href="./style copy.css" />
-        <script src="./view/TodoListView.js"></script>
+        <script src="../common-css/js/RestApi.js" defer></script>
+        <script src="./view/FormView.js" defer></script>
+        <script src="./view/TodoView.js"defer></script>
+        <script src="./model/TodoCollection.js"defer></script>
         <script src="./controller/TodoController.js" defer></script>
         <script src="./script.js" defer></script>
         <title>Todo list</title>
     </head>
     <body>
         <div class="container">
-            <!-- <div id="taskList" class="task-list u-full-width"></div>
+        
+        </div>
+   
+    </body>
+</html>
+
+
+    <!-- <div id="taskList" class="task-list u-full-width"></div>
             <form id="newTaskForm">
                 <div class="row">
                     <div class="ten columns">
@@ -29,24 +39,5 @@
                         <input type="submit" id="submitBtn" value="Add" />
                     </div>
                 </div>
-            </form> -->
-            <!-- <div class="row" id="errorContainer"></div> -->
-        </div>
-        <script type="text/template" id="todoItemTemplate">
-            <div class="task-item {{doneClass}}" data-todo-id="{{id}}">
-                {{title}}
-                <span class="delete-btn">x</span>
-            </div>
-        </script>
-    </body>
-</html>
-
-
-<!-- function fetchTodo(){
-    fetch('https://jsonplaceholder.typicode.com/todos?_limit=10')
-    .then((res)=>res.json())
-    .then((data)=>{
-       list = data
-       renderTasks(list);
-   });
-} -->
+            </form>
+            <div class="row" id="errorContainer"></div> -->

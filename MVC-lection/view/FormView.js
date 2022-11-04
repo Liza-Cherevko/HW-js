@@ -9,7 +9,7 @@ class TodoFormView {
 
 constructor(){ 
     this.#initForm()
-    
+    this.addNewTask()
 }
     
     #initForm() {
@@ -41,14 +41,14 @@ constructor(){
     }
 
     addNewTask() { 
-        this.el.addEventListener('click',onNewTaskFormSubmit)
+        this.el.addEventListener('click',this.onNewTaskFormSubmit)
     }
     
     onNewTaskFormSubmit(e) { 
         e.preventDefault();
-        const newTask = getFormValues();
-        saveTodo(newTask)
-        resetForm()
+        const newTask = this.getFormValues();
+        this.saveTodo(newTask)
+        this.resetForm()
     }
     getFormValues() { 
         return{
@@ -58,5 +58,8 @@ constructor(){
     saveTodo(todo) { 
         this.#form.onSave(todo);
         console.log('save'+ todo)
+    }
+    resetForm(){
+        this.el.value = '';
     }
 }

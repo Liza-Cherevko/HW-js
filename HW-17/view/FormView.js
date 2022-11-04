@@ -6,15 +6,7 @@ class TodoFormView {
     inpEl = null;
     submitBtnEl = null;
     inpSumEl = null;
-
-    static getFormValues() {
-         const taskNameInput = document.querySelector('#taskNameInput');
-
-        return {
-            title: taskNameInput.value,
-        }
-        
-    };
+    
     constructor(form) {
         this.#initForm();
         this.#form = form;
@@ -30,10 +22,11 @@ class TodoFormView {
         this.el.append(this.divEl);
         this.el.addEventListener('submit', (e) => { 
             e.preventDefault();
-            const newTask = TodoFormView.getFormValues(e.target);
+            const newTask = this.getFormValues(e.target);
             this.saveTodo(newTask)
-            resetForm()
+            this.resetForm()
         })
+
         this.divInEl = document.createElement('div');
         this.divInEl.className = 'ten columns';
         this.divEl.append(this.divInEl);
@@ -51,19 +44,22 @@ class TodoFormView {
         this.inpSumEl = document.createElement('input');
         this.inpSumEl.type = 'submit';
         this.inpSumEl.value = 'Add';
-        this.el.id = 'submitBtn';
+        this.inpSumEl.id = 'submitBtn';
         this.submitBtnEl.append(this.inpSumEl);
     }
 
-
-    
-
+    getFormValues() {
+       return {
+           title: this.inpEl.value
+       }
+       
+   };
  
     saveTodo(todo) { 
         this.#form.onSave(todo);
         console.log('save'+ todo)
     }
     resetForm(){
-        this.el.value = '';
+        this.inpEl.value = '';
     }
 }

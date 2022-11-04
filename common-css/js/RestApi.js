@@ -1,13 +1,14 @@
 class RestApi { 
     #baseUrl = null;
+
     constructor(url) { 
         this.#baseUrl = url; 
     }
 
-
     getList() { 
         return fetch(this.#baseUrl).then((res) => res.json());
     };
+
     create(obj) { 
       return  fetch(API_URL, {
             method: 'POST',
@@ -17,6 +18,7 @@ class RestApi {
             }
         }).then((res) => res.json())
     }
+
     update(obj) { 
         return fetch(this.#baseUrl + obj.id, {
             method: 'PUT',
@@ -26,6 +28,7 @@ class RestApi {
             },
         }).then((res) => res.json())
     }
+
     delete(id) { 
         return fetch(this.#baseUrl + id, {
             method: 'DELETE',

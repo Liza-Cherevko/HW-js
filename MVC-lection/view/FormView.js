@@ -7,18 +7,33 @@ class TodoFormView {
     submitBtnEl = null;
     inpSumEl = null;
 
-constructor(){ 
-    this.#initForm()
-    this.addNewTask()
+    static getFormValues() {
+         const taskNameInput = document.querySelector('#taskNameInput');
+
+        return {
+            title: taskNameInput.value,
+        }
+        
+    };
+    constructor(form) {
+        this.#initForm();
+        this.#form = form;
+        console.log(this.el);
 }
     
     #initForm() {
         this.el = document.createElement('form');
         this.el.id = 'newTaskForm';
+
         this.divEl = document.createElement('div')
         this.divEl.className = 'row';
         this.el.append(this.divEl);
-
+        this.el.addEventListener('submit', (e) => { 
+            e.preventDefault();
+            const newTask = TodoFormView.getFormValues(e.target);
+            this.saveTodo(newTask)
+            resetForm()
+        })
         this.divInEl = document.createElement('div');
         this.divInEl.className = 'ten columns';
         this.divEl.append(this.divInEl);
@@ -40,21 +55,10 @@ constructor(){
         this.submitBtnEl.append(this.inpSumEl);
     }
 
-    addNewTask() { 
-        this.el.addEventListener('click',this.onNewTaskFormSubmit)
-    }
+
     
-    onNewTaskFormSubmit(e) { 
-        e.preventDefault();
-        const newTask = this.getFormValues();
-        this.saveTodo(newTask)
-        this.resetForm()
-    }
-    getFormValues() { 
-        return{
-            title: this.el.value,
-        }
-    }
+
+ 
     saveTodo(todo) { 
         this.#form.onSave(todo);
         console.log('save'+ todo)

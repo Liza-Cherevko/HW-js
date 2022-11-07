@@ -23,7 +23,9 @@
   align-self: center;
 }
 .board__area{
-
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
   height: 100%;
   margin-top: 50px;
   padding: 50px;

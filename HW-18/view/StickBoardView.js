@@ -1,5 +1,7 @@
 class StickBoard { 
     static boardTemplate = ` <div class="board__area"> </div>  `
+
+
     #config = null;
     constructor(config) { 
         this.#config = config;
@@ -11,7 +13,7 @@ class StickBoard {
      
     }
     renderList(list) { 
-        this.el.innerHTML = list.map(TodoListView.generateTodoItemHtml).join('')
+        this.el.innerHTML = list.map(StickView.generateStickerItemHtml).join('')
     }
 
     getHTMLElement(html) { 

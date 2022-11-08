@@ -28,7 +28,8 @@
   gap: 15px;
   height: 100%;
   margin-top: 50px;
-  padding: 50px;
+  padding: 20px;
+  justify-content: center;
   border-radius: 3%;
   background-color: whitesmoke;;
 }
@@ -45,8 +46,9 @@
   font-weight: bold;
   cursor: pointer;
 }
-.sticker__txt{
+textarea{
   width: 150px;
   height: 50px;
   background-color: white;
+  color: black;
 }

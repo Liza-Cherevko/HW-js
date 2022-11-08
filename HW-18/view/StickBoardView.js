@@ -3,11 +3,11 @@ class StickBoard {
     #config = null;
     static boardTemplate = ` <div class="board__area"> </div>  `
     static stickerTemplate = `   
-   <div class ="sticker">
-   <div class = "sticker__header">X</div>
-   <div class="sticker__txt" data-stick-id="{{id}}>
-   <textarea name="text-area" id="text" cols="25" rows="10">
-        {{description}}
+   <div class ="sticker" data-stick-id="{{id}}" >
+   <div class = "sticker__header" >X</div>
+   <div class="sticker__txt" >
+   <textarea name = "title"  id="text" cols="25" rows="10" class = "sticker__txt">
+   {{description}}
    </textarea>
 </div>
 </div>
@@ -15,10 +15,11 @@ class StickBoard {
     static CLASSES = {
         DELETE_BTN_CLASS: 'sticker__header', 
         STICK_CLASS: 'sticker',
+        STICK_TXT_CLASS: 'sticker__txt',
     };
     static  generateStickerItemHtml({ id, description, }) {
         return StickBoard.stickerTemplate
-            .replaceAll('{{description}}', description)
+            .replaceAll('  {{description}}', description)
             .replaceAll('{{id}}', id);
     };
     static  getStickerId(el) {
@@ -30,7 +31,8 @@ class StickBoard {
     constructor(config) { 
         this.#initView();
         this.#config = config; 
-        console.log(this.el);
+      
+    
     };
 
     #initView() { 
@@ -42,15 +44,15 @@ class StickBoard {
                 return this.deleteStick(stickId); 
             }
         })
-     
+      
+        this.el.addEventListener('change', (e) => { 
+            const stickerId = StickBoard.getStickerId(e.target)
+            if (e.target.classList.contains(StickBoard.CLASSES. STICK_TXT_CLASS)) { 
+                return this.updateStick(stickerId); 
+            }
+        })
     };
-    // #onStickElClick(e){
-    //     const stickId = StickBoard.getStickerId(e.target)
-    //     if (e.target.classList.contains(StickBoard.CLASSES.DELETE_BTN_CLASS)) { 
-    //         // return this.deleteStick(stickId); 
-    //         console.log(stickId)
-    //     }
-    //    }
+
     renderList(list) { 
         this.el.innerHTML = list.map(StickBoard.generateStickerItemHtml).join('')
     };
@@ -66,5 +68,15 @@ class StickBoard {
         console.log('delete '+ id)
         this.#config.onDelete(id);
     };
+  
+    updateStick(id) { 
+        console.log('delete '+ id)
+        this.#config.onUpdate(id);
+    };
 
+    #getFormData() {
+        return {
+            title: this.el.elements.title.value
+        }
+    }
 }

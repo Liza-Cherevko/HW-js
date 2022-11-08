@@ -1,4 +1,4 @@
-const API_URL = 'https://5dd3d5ba8b5e080014dc4bfa.mockapi.io/stickers';
+const API_URL = 'https://5dd3d5ba8b5e080014dc4bfa.mockapi.io/stickers/';
 class StickCollection {
     list = [];
     #api = new RestApi(API_URL)
@@ -19,6 +19,16 @@ class StickCollection {
     return this.#api
       .create(data)
       .then((newstick) => { this.list=[...this.list,newstick] });
+  }
+
+  updateStick(id) {
+    const item = this.list.find((item) => item.id === id);
+    const updatedItem = {
+      ...item,
+    };
+  return  this.#api.update(updatedItem).then((data) => {
+    this.list =  this.list.map((item) => (item.id === data.id ? data : item));
+    });
   }
 
 

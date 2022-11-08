@@ -35,5 +35,6 @@ class StickHeaderView {
         this.#config.addStick(id)
         console.log('add'+ id)
     }
+ 
 }
  

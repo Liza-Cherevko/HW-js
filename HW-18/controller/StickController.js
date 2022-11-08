@@ -5,12 +5,15 @@ class StickController {
     constructor(container) { 
 
        
-        this.#stickHeader = new StickView({})
+        this.#stickHeader = new StickHeaderView({
+            onSave: (data)=>this.saveStick(data)
+        })
         container.append(this.#stickHeader.el)
         
 
         this.#stickBoard = new StickBoard({
-            onSave: (data)=>this.saveStick(data)
+            addStick: (data) => this.addNewStick(data),
+            onDelete:(id)=>this.deleteStick(id)
         })
         container.append(this.#stickBoard.el)
 
@@ -19,16 +22,20 @@ class StickController {
         this.#collection.fetchList().then(() => {
             this.#stickBoard.renderList( this.#collection.list)
         });
-
-
-     
-
-   
-
     }
 
+    addNewStick(id) { 
+        this.#collection.addNewStick(id).then(() => {
+            this.#stickBoard.renderList(this.#collection.list)
+        })
+    }
     saveStick(data) { 
         this.#collection.createStick(data).then(() => {
+            this.#stickBoard.renderList(this.#collection.list);
+        });
+    }
+    deleteStick(id) {
+        this.#collection.deleteStick(id).then(() => {
             this.#stickBoard.renderList(this.#collection.list);
         });
     }

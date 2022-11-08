@@ -45,3 +45,9 @@
   font-weight: bold;
   cursor: pointer;
 }
+.sticker__txt{
+  width: 150px;
+  height: 50px;
+  background-color: white;
+  cursor: pointer;
+}

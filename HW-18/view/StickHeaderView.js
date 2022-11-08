@@ -7,26 +7,7 @@ class StickHeaderView {
                     <button class="board__header-add">Add sticker</button>
                 </div>
                 `
-    static stickerTemplate = `   
-    <div class ="sticker">
-    <div class = "sticker__header">X</div>
-    <div class="sticker__txt" data-stick-id="{{id}}>
-    <textarea name="sticker__txt" id="text" cols="25" rows="10">
-             {{description }}
-    </textarea>
-</div>
-</div>`
-    
-static  generateStickerItemHtml({ id, description, }) {
-    return StickHeaderView.stickerTemplate
-        .replaceAll('{{description}}', description)
-        .replaceAll('{{id}}', id);
-}
-// static getStickerId(el) {
-//     const parent = el.closest('.' + StickHeaderView.CLASSES.TASK_STICK_CLASS);
-
-//     return parent ? parent.dataset.stickId : null;
-//     }  
+ 
     
     constructor(config) { 
         this.#config = config;

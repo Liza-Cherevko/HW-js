@@ -20,21 +20,8 @@ class StickCollection {
       .create(data)
       .then((newstick) => { this.list=[...this.list,newstick] });
   }
-  deleteStick(id) {
-    return this.#api.delete(id).then(() => {
-        this.list = this.list.filter((item) => item.id !== id);
-    });
-}
-  // addNewStick(id) {
-  //   const item = this.list.find((item) => item.id === id);
-  //   const updatedItem = {
-  //     ...item,
-  //     // isDone: !item.isDone
-  //   };
-  // return  this.#api.update(updatedItem).then((data) => {
-  //   this.list =  this.list.map((item) => (item.id === data.id ? data : item));
-  //   });
-  // }
+
+
 
 }
 

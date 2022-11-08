@@ -6,7 +6,7 @@ class StickBoard {
    <div class ="sticker">
    <div class = "sticker__header">X</div>
    <div class="sticker__txt" data-stick-id="{{id}}>
-   <textarea name="sticker__txt" id="text" cols="25" rows="10">
+   <textarea name="text-area" id="text" cols="25" rows="10">
         {{description}}
    </textarea>
 </div>
@@ -21,12 +21,11 @@ class StickBoard {
             .replaceAll('{{description}}', description)
             .replaceAll('{{id}}', id);
     };
-    static getStickerId(el) {
+    static  getStickerId(el) {
         const parent = el.closest('.' + StickBoard.CLASSES.STICK_CLASS);
         return parent ? parent.dataset.stickId : null;
-
+       
     };
-    
 
     constructor(config) { 
         this.#initView();
@@ -37,17 +36,21 @@ class StickBoard {
     #initView() { 
         this.el = document.createElement('div');
         this.el.className = 'board__area';
-        this.el.addEventListener('click', this.#onStickElClick)
+        this.el.addEventListener('click', (e) => { 
+            const stickId = StickBoard.getStickerId(e.target)
+            if (e.target.classList.contains(StickBoard.CLASSES.DELETE_BTN_CLASS)) { 
+                return this.deleteStick(stickId); 
+            }
+        })
      
     };
-    #onStickElClick(e){
-        const stickId = StickBoard.getStickerId(e.target)
-      switch(true){
-           case (e.target.classList.contains(StickBoard.CLASSES.DELETE_BTN_CLASS)):
-        return this.deleteStick(stickId); 
-      }
-    
-       }
+    // #onStickElClick(e){
+    //     const stickId = StickBoard.getStickerId(e.target)
+    //     if (e.target.classList.contains(StickBoard.CLASSES.DELETE_BTN_CLASS)) { 
+    //         // return this.deleteStick(stickId); 
+    //         console.log(stickId)
+    //     }
+    //    }
     renderList(list) { 
         this.el.innerHTML = list.map(StickBoard.generateStickerItemHtml).join('')
     };
@@ -60,8 +63,8 @@ class StickBoard {
 
 
     deleteStick(id) { 
-        this.#config.onDelete(id);
         console.log('delete '+ id)
+        this.#config.onDelete(id);
     };
-  
+
 }

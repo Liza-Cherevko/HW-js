@@ -3,7 +3,6 @@ class StickBoard {
     #config = null;
     static boardTemplate = ` <div class="board__area"> </div>  `
     static stickerTemplate = `   
-
    <div class ="sticker">
    <div class = "sticker__header">X</div>
    <div class="sticker__txt" data-stick-id="{{id}}>
@@ -25,6 +24,7 @@ class StickBoard {
     static getStickerId(el) {
         const parent = el.closest('.' + StickBoard.CLASSES.STICK_CLASS);
         return parent ? parent.dataset.stickId : null;
+
     };
     
 
@@ -37,14 +37,17 @@ class StickBoard {
     #initView() { 
         this.el = document.createElement('div');
         this.el.className = 'board__area';
-        this.el.addEventListener('click', (e) => { 
-            const StickId = StickBoard.getStickerId(e.target);
-            if (e.target.classList.contains(StickBoard.CLASSES.DELETE_BTN_CLASS)) { 
-                return this.deleteStick(StickId); 
-            }
-          })
+        this.el.addEventListener('click', this.#onStickElClick)
      
     };
+    #onStickElClick(e){
+        const stickId = StickBoard.getStickerId(e.target)
+      switch(true){
+           case (e.target.classList.contains(StickBoard.CLASSES.DELETE_BTN_CLASS)):
+        return this.deleteStick(stickId); 
+      }
+    
+       }
     renderList(list) { 
         this.el.innerHTML = list.map(StickBoard.generateStickerItemHtml).join('')
     };

@@ -59,3 +59,13 @@ body{
 .accordeon-title.accordeon-content-active{
  display: block;
 }
+
+.Super-Accordion-title {
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+
+

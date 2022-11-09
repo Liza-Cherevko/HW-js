@@ -1,0 +1,54 @@
+.container{
+  margin: 0 auto;
+  height: 100vh; 
+}
+.board__wrapp{
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+}
+.board__header{
+  margin-top: 50px;
+  width: 100%;
+
+  height: 50px;
+  background-color: whitesmoke;
+  display: flex;
+  cursor: pointer;
+}
+.board__header-add{
+  background-color: black;
+  color: aliceblue;
+  margin-left: auto;
+  align-self: center;
+}
+.board__area{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  height: 100%;
+  margin-top: 50px;
+  padding: 20px;
+  justify-content: center;
+  border-radius: 3%;
+  background-color: whitesmoke;;
+}
+.sticker{
+  max-width: 250px;
+  max-height: 450px;
+  padding: 5px;
+  background-color: rgb(165, 165, 165);
+}
+.sticker__header{
+  text-align: end;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+textarea{
+  width: 150px;
+  height: 50px;
+  background-color: white;
+  color: black;
+}

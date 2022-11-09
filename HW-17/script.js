@@ -1,0 +1,1 @@
+new TodoController(document.querySelector('.container'));

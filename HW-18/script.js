@@ -1,0 +1,1 @@
+new StickController(document.querySelector('.container'));

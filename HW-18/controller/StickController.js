@@ -14,7 +14,7 @@ class StickController {
         this.#stickBoard = new StickBoard({
             addStick: (data) => this.addNewStick(data),
             onDelete: (id) => this.deleteStick(id),
-            onUpdate: (id) => this.updateStick(id, value)
+            onUpdate: (id, value) => this.updateStick(id, value)
         })
         container.append(this.#stickBoard.el)
 

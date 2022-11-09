@@ -69,9 +69,9 @@ class StickBoard {
         this.#config.onDelete(id);
     };
   
-    updateStick(id) { 
-        console.log('delete '+ id)
-        this.#config.onUpdate(id);
+    updateStick(id, text) { 
+        console.log('update '+ id)
+        this.#config.onUpdate(id, text);
     };
 
     #getFormData() {

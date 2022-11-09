@@ -21,16 +21,12 @@ class StickCollection {
       .then((newstick) => { this.list=[...this.list,newstick] });
   }
 
-  updateStick(id,description) {
+  updateStick({id,description}) {
 return fetch(`${API_URL}/${id}`, {
   method: 'PUT',
-   body: JSON.stringify({
-       description
-     }),
-   headers:  {
-   'Content-Type': 'application/json',
-            },
-        }).then(()=>{
+   body: JSON.stringify({ description}),
+   headers:  { 'Content-Type': 'application/json', },})
+   .then(()=>{
           const item = this.list.find(item=> item.id === id);
           item.description = description
         })

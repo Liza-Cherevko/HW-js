@@ -72,6 +72,7 @@ function fetchContacts() {
 function renderContacts(list) {
     contactsListEl.innerHTML = '';
     list.forEach(renderContact);
+    // contactsListEl.innerHTML =list.map(getContactHtml).join('')
 }
 
 function renderContact(contact) {
@@ -126,11 +127,19 @@ fetch(API_URL, {
 
 
 
+<<<<<<< HEAD
+function updateContact({ id, name, surname, email }) {
+    // const item = list.find((item) => item.id === id);
+    const updatedItem = {
+        // ...item,
+        id: +idEl.value,
+=======
 function updateContact(contact) {
     const item = list.find((item) => item.id === id);
     const updatedItem = {
         ...item,
         id: idEl.value,
+>>>>>>> 995de50bab4579d11a163f886e4409dcb2831433
         name: nameEl.value,
         surname: surnameEl.value,
         email: emailEl.value,

@@ -48,7 +48,7 @@ class StickBoard {
         this.el.addEventListener('change', (e) => { 
             const stickerId = StickBoard.getStickerId(e.target)
             if (e.target.classList.contains(StickBoard.CLASSES. STICK_TXT_CLASS)) { 
-                return this.updateStick(stickerId); 
+                return this.updateStick(stickerId, e.target.value); 
             }
         })
     };
@@ -69,9 +69,9 @@ class StickBoard {
         this.#config.onDelete(id);
     };
   
-    updateStick(id) { 
-        console.log('delete '+ id)
-        this.#config.onUpdate(id);
+    updateStick(id, text) { 
+        console.log('update '+ id)
+        this.#config.onUpdate(id, text);
     };
 
     #getFormData() {

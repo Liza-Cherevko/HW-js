@@ -29,9 +29,9 @@ class RestApi {
         }).then((res) => res.json())
     }
 
-    delete(id) { 
+    delete(id) {
         return fetch(this.#baseUrl + id, {
             method: 'DELETE',
         }).then((res) => res.json());
-    };
+    }
 }

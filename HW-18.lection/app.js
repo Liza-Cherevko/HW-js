@@ -1,1 +1,1 @@
-new NotesController($('.container'));
+const controller = new NotesController($('.container'));

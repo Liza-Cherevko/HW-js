@@ -3,7 +3,8 @@ body, html {
 }
 
 input[type="text"], textarea {
-    color: bisque;
+    color: rgb(255, 255, 255);
+    background-color:#222;
 }
 
 .u-full-height{
@@ -15,8 +16,10 @@ input[type="text"], textarea {
 }
 
 .field {
+    display: flex;
     margin-top: -50px;
     padding-top: 50px;
+    flex-wrap: wrap;
 }
 
 .heading {
@@ -35,12 +38,10 @@ input[type="text"], textarea {
 
 .note {
     width: 200px;
-    background-color: lightyellow;
+    background-color: white;
     color: black;
     margin: 10px;
-    padding: 5px;
-    display: inline-block;
-    position: absolute;
+    padding: 5px
 }
 
 .note .delete-note{

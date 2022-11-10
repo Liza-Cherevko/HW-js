@@ -13,3 +13,10 @@ function interpolate(template, obj) {
 
     return template;
 }
+
+function intorpalate(template, obj){
+      for (key in obj){
+        template = template.replaceAll(`{{${key}}}`, obj[key])
+      }
+      return template;
+}

@@ -2,5 +2,8 @@
  width: 1200px;
  height: 600px;
  margin:200px auto;
- background-color: rgb(241, 221, 221);
+
+}
+img{
+   align-items: center;
 }

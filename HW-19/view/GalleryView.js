@@ -22,13 +22,11 @@ class GalleryView{
 
     #initView() { 
         this.$el = $(GalleryView.template);
-        // this.$el.find('img').onLoad();
+        this.$el.foreach()
      
   }
     renderList(list) {
         const $items = $(list.map(GalleryView.getIMGHtml).join(''));
-        
-        this.$el.append($items);
     };
 
 }

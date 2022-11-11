@@ -5,15 +5,14 @@ class NotesController {
 
 constructor($container) {
     this.#headerView = new HeaderView({
-        onCreate:()=>{
-            this.createNote()
-        }
+        onCreate: this.createNote
+        
     });
     $container.append(this.#headerView.$el);
 
     this.#boardView = new BoardView({
-        onDelete: (id)=> this.deleteNote(id),
-        onUpdate:(id, changes)=>this.updateNote(id, changes)
+        onDelete: this.deleteNote,
+        onUpdate:this.updateNote
     });
     $container.append(this.#boardView.$el);
 
@@ -22,17 +21,17 @@ constructor($container) {
         this.#boardView.renderList(this.#collection.list);
     });
 }
-    deleteNote(id)  {
+    deleteNote=(id) => {
         this.#collection.deleteNote(id).then(() => {
             this.#boardView.renderList(this.#collection.list);
         });
     };
-    updateNote(id, changes) {
+    updateNote=(id, changes) =>{
         this.#collection.updateNote(id, changes).then(() => {
             this.#boardView.renderList(this.#collection.list);
         });
     };
-    createNote() {
+    createNote = ()=> {
         this.#collection.createNote().then(() => {
             this.#boardView.renderList(this.#collection.list);
         });

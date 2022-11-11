@@ -41,7 +41,8 @@ input[type="text"], textarea {
     background-color: white;
     color: black;
     margin: 10px;
-    padding: 5px
+    padding: 5px;
+    position: absolute;
 }
 
 .note .delete-note{

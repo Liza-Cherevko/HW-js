@@ -11,7 +11,7 @@ class BoardView{
 `;
 
 static noteTemplate = `
-<div class="note" data-note-index="{{id}}" >
+<div class="note" data-note-index="{{id}}" style = "left:{{left}}px; top:{{top}}px">
             <span class="drag-note">o</span>
             <span class="delete-note">x</span>
             <textarea class="edit-note-control" name="description">{{description}}</textarea>
@@ -44,8 +44,18 @@ static noteTemplate = `
            
         })
     }
-    renderList(list){
-        this.$el.html(list.map(BoardView.getNoteHtml).join(''));
+    renderList(list) {
+        const $items = $(list.map(BoardView.getNoteHtml).join(''));
+        $items.filter(BoardView.SELECTORS.NOTE).draggable({
+            handle: '.drag-note',
+            stop: (e, ui) => {
+                const id = BoardView.getElementId($(e.target));
+                this.#config.onUpdate(id, ui.position);
+              }
+        })
+        
+        this.$el.append($items);
+        
     };
 
     delete(id){

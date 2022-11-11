@@ -1,13 +1,17 @@
 // const controller = new GalleryController($('.fotorama'));
+
+
+
 const API_URL = 'https://jsonplaceholder.typicode.com/photos?_limit=10';
-init()
-function init() { 
+init();
+function init() {
     fetch(API_URL)
         .then(response => response.json())
-        .then(data => { 
+        .then(data => {
             data.foreach(photo => {
                 $('.fotorama').append(
-                    `<img src = "${photo.url}" class="img" data-img-index="${photo.url}"`
+                    `<div class = "fotorama-item" data-src="${photo.url}" data-caption="${photo.title}">
+                    <img src="${photo.thumbnailUrl}"/></div>`
                 )
             });
         })

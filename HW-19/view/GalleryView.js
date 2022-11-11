@@ -20,11 +20,15 @@ class GalleryView{
         this.#initView();
     }
 
-    #initView() { 
+    #initView() {
         this.$el = $(GalleryView.template);
-        this.$el.foreach()
-     
-  }
+        this.$el.foreach((photo) => { 
+            $('.fotorama').append( `<div class = "fotorama-item" data-src="${photo.url}" data-caption="${photo.title}">
+            <img src="${photo.thumbnailUrl}"/></div>`)
+
+        })
+      
+}
     renderList(list) {
         const $items = $(list.map(GalleryView.getIMGHtml).join(''));
     };

@@ -4,9 +4,8 @@ class GalleryView{
     static SELECTORS={
         IMG:'.img',
      }
-    static template = `  <div class="fotorama"  data-loop="true">    </div> `;
-
-    static imgTemplate = `<img class="img" data-img-index="{{id}}" src = "{{url}}">`;
+     static template = `  <div     </div> `
+    static imgTemplate = `<img src = "{{url}}" class="img" data-img-index="{{id}}" >`;
 
 
     static getElementId($el) {

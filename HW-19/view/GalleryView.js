@@ -23,7 +23,7 @@ class GalleryView{
 
     #initView() { 
         this.$el = $(GalleryView.template);
-        this.$el.find('img').onLoad();
+        // this.$el.find('img').onLoad();
      
   }
     renderList(list) {

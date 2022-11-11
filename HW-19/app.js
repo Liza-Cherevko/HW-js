@@ -1,1 +1,1 @@
-const controller = new GalleryController($('.container'));
+const controller = new GalleryController($('.fotorama'));

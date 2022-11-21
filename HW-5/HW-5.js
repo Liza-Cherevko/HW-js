@@ -20,37 +20,18 @@ function isOperationInvalid(action) {
 }
 
 function getOperands() {
-    let operands;
-    do {
-        operands = getAnswer().split(',').map(Number)
-    } while (operands.findIndex((item)=>isNaN(item))!== -1);
-    // const operands = answer.split(',').map(Number).filter((item)=> !isNaN(item));
-    
-  
-    return operands;
-}
-
-function getAnswer() { 
-    const answer = prompt('Operands?')
-    while (isOperandsAnswerInvalid(answer)) { 
-        answer = prompt('Put operands again')
+    let operands = prompt('Put operands')
+    while (isOperandsInvalid(operands)) { 
+        operands = prompt('Put operands again')
     }
-    return answer
-}
-function isOperandsAnswerInvalid(val) { 
-    return val === null || val.trim() === '';
-}
-
-function calculateResult(values, operator) { 
-    // let result = values[0];
-    // for (let i = 1; i < values.length; i++) { 
-    //     result = calculate(result, values[i], operator)
-    // }
-    return values.reduce((acc, item)=>calculate(acc, item, operator))
-    
-   
+    const operandsArr = operands.split(',').map(Number);
+    console.log(operands)
+    return operandsArr
 }
 
+function isOperandsInvalid(value) { 
+    return value === null || value.trim() === '';
+}
 
 function calculate(a, b, action) {
     switch (action) {
@@ -68,17 +49,13 @@ function calculate(a, b, action) {
     }
 }
 
-function showResult(value) { 
-  console.log('Result: '+ value)
+function calculateResult(values, operator) { 
+    return values.reduce((acc, item)=>calculate(acc, item, operator))
 }
-
-
-
-
-
-
-
-
+function showResult(value) { 
+    console.log('Result: ' + value)
+    alert('Result: ' + value)
+}
 
 
 // моя версия домашки 

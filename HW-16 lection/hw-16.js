@@ -20,7 +20,7 @@ contactsListEl.addEventListener('click', onContactsListClick);
 nameEl.addEventListener('input', onInputInput);
 surnameEl.addEventListener('input', onInputInput);
 emailEl.addEventListener('input', onInputInput);
- const contactsApi = new RestApi(API_URL)
+ const contactsApi = new RestApi( API_URL)
 let list = [];
 
 init();
@@ -56,7 +56,9 @@ function onAddContactBtnClick() {
 }
 
 function init() {
-    fetchContacts().then(()=>renderContacts(list)) ; 
+    fetchContacts();
+    // .then(()=>renderContacts(list))
+     
 }
 
 function fetchContacts() { 
@@ -205,6 +207,8 @@ function getContactId(elem) {
    const parent = elem.closest(CONTACT_ITEM_CLASS);
     return parent ? parent.dataset.contactId : null;
 }
+
+
 
 
 

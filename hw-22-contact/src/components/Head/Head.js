@@ -11,6 +11,7 @@ export default class Head extends Component {
                 <th>Actions</th>
             </tr>
         </thead>
+        
         )
     }
 }

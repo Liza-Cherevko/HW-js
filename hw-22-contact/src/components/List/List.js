@@ -7,14 +7,24 @@ export default class List extends Component{
         return(
             <tbody >
                 {
-                    this.props.contacts.map((item)=>{
-                        <ListItem
+                    this.props.contacts.map((item)=>(
+                    <ListItem  
                     key={item.id}
                     contacts={item}
-                />
-                    })
+                  onDelete={this.props.onDelete}
+                    />))
                 }
-            </tbody>
+            </tbody>      
+            //    <div>
+            //           {
+            //         this.props.contacts.map((item)=>(
+            //         <ListItem  
+            //         key={item.id}
+            //         contacts={item}
+            //       onDelete={this.props.onDelete}
+            //         />))
+            //     }
+            //    </div>
         
         )
     }

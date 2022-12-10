@@ -39,7 +39,7 @@ class App extends Component {
   render(){
     return(
       <>
-                 <table >
+                 <div >
                 <Head/>
                 <List 
                  contacts={this.state.contacts}
@@ -47,7 +47,7 @@ class App extends Component {
                 />
                 <AddContact onSave={this.createContact}/>
        
-            </table>
+            </div>
       
       </>
     )

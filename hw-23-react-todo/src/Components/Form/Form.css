@@ -1,0 +1,13 @@
+.form{
+    display: block;
+    text-align: center;
+}
+
+.form-inp{
+    width: 25%;
+    border: 2px solid grey;
+    padding: 5px;
+}
+.form-save-btn{
+   margin-left: 15px;
+}

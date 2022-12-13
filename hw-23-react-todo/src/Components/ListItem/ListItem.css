@@ -1,0 +1,15 @@
+.item{
+    width: 35%;
+    border: 2px solid grey;
+    padding: 5px;
+}
+.item-inner{
+
+}
+
+.item.done{
+    text-decoration: line-through;
+}
+.delete-btn{
+    float: right;
+}

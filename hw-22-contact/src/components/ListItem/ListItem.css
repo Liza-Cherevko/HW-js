@@ -1,0 +1,8 @@
+.wrap{
+    display: flex;
+    gap: -5px;
+}
+.item{
+    padding-top: 10px;
+    width: 150px;
+}

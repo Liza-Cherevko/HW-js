@@ -1,11 +1,18 @@
 
 import React from 'react'
 
-function ContactForm() {
-    
+function ContactForm({ onSave}) {
+    function onformSubmit(e) { 
+        e.preventDefault();
+
+        onSave({
+            title: e.target.title.value,
+        });
+        e.target.reset();
+    }
   return (
     <div className="row">
-    <form>
+    <form onSubmit={onformSubmit}>
         <div className="three columns">
             <input
                       type="text"

@@ -5,7 +5,7 @@ import '../../common-css/css/dark-theme.css';
 import Header from '../ContactHeader/ContactHeader';
 import { useEffect, useState } from 'react';
 import ContactList from '../ContactList/ContactList';
-import { getContacts, removeContact } from '../../services/services';
+import { createItem, getContacts, removeContact } from '../../services/services';
 import ContactForm from '../ContactForm/ContactForm';
 
 
@@ -21,12 +21,16 @@ function App() {
       setContacts(contacts.filter((item) => item.id !== id));
   });
   }
-  
+  function saveContact(newContact) { 
+    createItem({...newContact}).then((data) =>
+    setContacts([...contacts, data])
+);
+  }
   return (
     <div className="container">
       <Header />
       <ContactList contacts={contacts} onDelete={ deleteContact} />
-      <ContactForm/>
+      <ContactForm onSave={saveContact} />
       
     </div>
   );

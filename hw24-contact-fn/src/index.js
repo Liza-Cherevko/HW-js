@@ -1,11 +1,8 @@
-import './common-css/css/normalize.css';
-import './common-css/css/skeleton.css';
-import './common-css/css/dark-theme.css';
-import './index.css';
-
-import App from './Components/App/App';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from '../src/Copmonents/App/App';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,5 +10,4 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
 

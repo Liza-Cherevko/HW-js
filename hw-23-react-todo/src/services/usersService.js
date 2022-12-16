@@ -19,10 +19,10 @@ export function createTodos(newTodo) {
     }).then((res) => res.json());
 }
 
-  export function updateTodos(id) { 
-    return fetch(TODO_URL + id, {
+  export function updateTodos(obj) { 
+    return fetch(TODO_URL + obj.id, {
         method: 'PUT',
-        body: JSON.stringify(id),
+        body: JSON.stringify(obj),
         headers:  {
             'Content-Type': 'application/json',
         },

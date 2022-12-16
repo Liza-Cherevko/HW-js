@@ -16,8 +16,8 @@ export class App extends Component {
 
 
   toggleTodo = (id) => {
-
-  updateTodos(id).then(() => { 
+    const todos = this.state.todo.find((item)=> item.id === id)
+    updateTodos({...todos, isDone: !todos.isDone}).then(() => { 
     this.setState({
       todo: this.state.todo.map((item)=>
       item.id!==id

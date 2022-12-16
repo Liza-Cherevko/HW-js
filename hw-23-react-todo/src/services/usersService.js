@@ -19,12 +19,12 @@ export function createTodos(newTodo) {
     }).then((res) => res.json());
 }
 
-  export function updateTodos(obj) { 
+export function updateTodos(obj) { 
     return fetch(TODO_URL + obj.id, {
         method: 'PUT',
         body: JSON.stringify(obj),
-        headers:  {
+        headers: {
             'Content-Type': 'application/json',
         },
-    }).then((res) => res.json())
+    }).then(res => res.json());
 }

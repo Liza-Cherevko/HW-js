@@ -14,7 +14,7 @@ export function updateItem(updateItem){
     }).then((res)=> res.json())
 }
 
-export function removeItem(id){
+export function removeContact(id){
     return fetch(API_URL + id, {
         method: 'DELETE',
     }).then((res) => res.json());

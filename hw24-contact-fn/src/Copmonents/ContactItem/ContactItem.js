@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-function ContactItem({ contact}) {
+function ContactItem({ contact, onDelete}) {
     // const { name, surname, email } = this.props.contacts;
   return (
     <div className="row">
@@ -10,10 +10,9 @@ function ContactItem({ contact}) {
     <div className="three columns">{ contact.surname}</div>
     <div className="three columns">{ contact.email}</div>
     <div className="three columns">
-        <button>Delete</button>
-    </div>
+        <button onClick={()=> {onDelete(contact.id)}}>Delete</button>
 </div>
-  )
-}
+  </div>
+)}
 
 export default ContactItem

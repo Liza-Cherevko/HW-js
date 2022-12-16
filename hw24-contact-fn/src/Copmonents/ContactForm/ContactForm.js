@@ -6,7 +6,9 @@ function ContactForm({ onSave}) {
         e.preventDefault();
 
         onSave({
-            title: e.target.title.value,
+            name: e.target.name.value,
+            surname: e.target.surname.value,
+            email: e.target.email.value,
         });
         e.target.reset();
     }
@@ -17,20 +19,23 @@ function ContactForm({ onSave}) {
             <input
                       type="text"
                       className="u-full-width"
+                      name='name'
             />
                  
         </div>
         <div className="three columns">
             <input
                 type="text"
-                className="u-full-width"
+                      className="u-full-width"
+                      name='surname'
             />
         
         </div>
         <div className="three columns">
             <input
                 type="text"
-                className="u-full-width"
+                      className="u-full-width"
+                      name='email'
             />
       
         </div>

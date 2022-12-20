@@ -1,18 +1,16 @@
 import React from 'react'
 import PhotosItem from './PhotosItem'
 
-
-
-
-function PhotosList({ photos }) {
-
+function PhotosList({ photo }) {
+  console.log({photo})
   return (
     <div>
-      {photos.map((item) => (<PhotosItem key={item.id} photos={item}  />))}
-         
+        {photo.map((item) => (
+              <PhotosItem key={item.id} photos={item} />
+          ))}
+
     </div>
   )
 }
 
 export default PhotosList
-{/* // photo => ({ img: photo.url, thumb: photo.thumbnailUrl } */}

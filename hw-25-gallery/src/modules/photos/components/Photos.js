@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import photoService from '../services/photoService';
+
+import usePhotos from '../hooks/usePhotos'
 import PhotosList from './PhotosList';
 
 function Photos() {
-  const [photos, setPhotos] = useState([]);
-  useEffect(() => { 
-    photoService.getList().then(setPhotos)
-  })
+  const { photo } = usePhotos();
 
-  
   return (
     <div>
-      <PhotosList photos={ photos} />
+      <PhotosList photo={photo} />
     </div>
   )
 }

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import usersService from '../services/usersService';
 
 export default function useUsers() {
+    
     const [users, setUsers] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 

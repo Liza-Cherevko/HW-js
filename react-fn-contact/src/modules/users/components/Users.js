@@ -7,6 +7,7 @@ import UserList from './UserList'
 function Users() {
     const { users, deleteUser, saveUser, isLoading } = useUsers();
     const [currentUser, setCurrentUser] = useState({})
+    
     function editUser(id) { 
         setCurrentUser(users.find((item) => item.id === id));
     }

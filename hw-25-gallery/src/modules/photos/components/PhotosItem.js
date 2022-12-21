@@ -1,11 +1,12 @@
 import React from 'react'
 
-function PhotosItem({ photos: {title, url, thumbnailUrl } }) {
+function PhotosItem(  { photos: { title, thumbnailUrl, albumId }} ) {
+ 
+   
   return (
-    <div>
-          <div className=''>{title}</div>
-          {/* <img src={url} alt="portlandlogo" /> */}
-          <img src={thumbnailUrl } alt="portlandlogo"/>
+    <div id={albumId}>
+          <div>{title}</div>
+      <img src={thumbnailUrl} alt="img"  />
     </div>
   )
 }

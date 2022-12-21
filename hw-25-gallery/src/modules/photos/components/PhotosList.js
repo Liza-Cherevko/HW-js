@@ -1,12 +1,15 @@
-import React from 'react'
+
 import PhotosItem from './PhotosItem'
 
-function PhotosList({ photo }) {
-  console.log({photo})
+function PhotosList({ photo, albumItemId  }) {
+
+   
+
   return (
     <div>
-        {photo.map((item) => (
-              <PhotosItem key={item.id} photos={item} />
+      
+      {photo.map((item) => (
+        <PhotosItem key={item.id} photos={item} albumItemId={albumItemId}  />
           ))}
 
     </div>

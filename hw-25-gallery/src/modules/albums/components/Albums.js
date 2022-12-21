@@ -4,8 +4,8 @@ import albumService from '../services/albumService'
 import AlbumsList from './AlbumsList';
 
 function Albums() {
-  const [albums, setAlbums]= useState([])
-
+  const [albums, setAlbums] = useState([])
+  
   useEffect(() => {
     albumService.getList().then(setAlbums)
    },[])
@@ -14,7 +14,7 @@ function Albums() {
   
   return (
     <div>
-       <AlbumsList albums={albums}/>
+      <AlbumsList albums={albums}  />
     </div>
   )
 }

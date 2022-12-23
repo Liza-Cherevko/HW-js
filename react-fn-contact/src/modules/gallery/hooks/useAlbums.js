@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import api from '../../../api'
 
-export function useAlbums() { 
+export default function useAlbums() { 
     const [albums, setAlbums] = useState([])
 
 

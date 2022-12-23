@@ -1,27 +1,14 @@
-
-import React, { useEffect, useState } from 'react';
-
-import { useAlbums } from '../hooks/useAlbums';
-import usePhotos from '../hooks/usePhotos';
+import React from 'react'
+import useGallery from '../hooks/useGallery';
 import AlbumsList from './AlbumsList';
 import PhotosList from './PhotosList';
 
 function Gallery() {
-    const [albumId, setAlbumId] = useState(null);
-
-    const albums = useAlbums();
-    const photos = usePhotos(albumId);
-
-    useEffect(() => {
-        if (!albums.length) return
-        setAlbumId(albums[0].id)
-     }, [albums])
-
-console.log(photos)
+  const {albums, getAlbumPhotos, photos } = useGallery();
   return (
       <div className='row'>
-          { albumId}
-          <AlbumsList list={albums} onNavigate={setAlbumId} />
+       
+          <AlbumsList list={albums} onNavigate={getAlbumPhotos} />
           <PhotosList list={photos} />
     </div>
   )

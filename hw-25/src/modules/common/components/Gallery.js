@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import usePhotos from '../components/hooks/usePhotos';
+import React, { useEffect, useState } from 'react';
 
-import AlbumList from '../components/AlbumList';
-import useAlbum from '../components/hooks/useAlbum';
-import PhotosList from '../components/PhotosList'
+import { useAlbums } from '../components/hooks/useAlbums';
+import usePhotos from '../components/hooks/usePhotos';
+import AlbumList from './AlbumList';
+import PhotoList from './PhotosList';
 
 function Gallery() {
     const [albumId, setAlbumId] = useState(null);
 
-    const albums = useAlbum();
+    const albums = useAlbums();
     const photos = usePhotos(albumId);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ console.log(photos)
       <div className='row'>
           { albumId}
           <AlbumList list={albums} onNavigate={setAlbumId} />
-          <PhotosList list={photos} />
+          <PhotoList list={photos} />
     </div>
   )
 }

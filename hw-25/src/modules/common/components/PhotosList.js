@@ -3,11 +3,11 @@ import PhotosListItem from './PhotosListItem'
 
 function PhotosList({ list}) {
   return (
-      <div className='nine columns'>
-          {/* {list.map((item) => (
+      <div className='three columns'>
+          {list.map((item) => (
               <PhotosListItem key={item.id} photo={item} />
-          ))} */}
-          PhotosListItem
+          ))}
+          
     </div>
   )
 }

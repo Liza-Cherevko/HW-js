@@ -5,7 +5,8 @@ import Photos from './modules/photos/components/Photos';
 
 function App() {
  
-
+  const albums = useAlbums();
+  const photos = usePhotos(albumId);
 
 
   return (

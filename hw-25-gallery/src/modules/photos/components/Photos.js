@@ -1,15 +1,15 @@
-import usePhotos from '../hooks/usePhotos'
-import PhotosList from './PhotosList';
+// import usePhotos from '../hooks/usePhotos'
+// import PhotosList from './PhotosList';
 
-function Photos() {
-  const { photo, albumItemId: {userId } } = usePhotos();
+// function Photos() {
+//   const { photo, albumItemId: {userId } } = usePhotos();
 
-  return (
-    <div>
-      <PhotosList photo={photo} albumItemId={userId} />
+//   return (
+//     <div>
+//       <PhotosList photo={photo} albumItemId={userId} />
     
-    </div>
-  )
-}
+//     </div>
+//   )
+// }
 
-export default Photos
+// export default Photos

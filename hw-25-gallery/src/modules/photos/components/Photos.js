@@ -6,7 +6,8 @@ function Photos() {
 
   return (
     <div>
-      <PhotosList photo={photo} albumItemId={userId } />
+      <PhotosList photo={photo} albumItemId={userId} />
+    
     </div>
   )
 }

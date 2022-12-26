@@ -1,15 +1,18 @@
-import React from 'react'
-import useGallery from '../hooks/useGallery';
 import AlbumsList from './AlbumsList';
 import PhotosList from './PhotosList';
+import React from 'react'
+import useGallery from '../hooks/useGallery';
 
 function Gallery() {
-  const {albums, getAlbumPhotos, photos } = useGallery();
+
   return (
       <div className='row'>
-       
-          <AlbumsList list={albums} onNavigate={getAlbumPhotos} />
-          <PhotosList list={photos} />
+       <div className='three columns '>
+                 <AlbumsList/>
+       </div>
+       <div className='nine columns '>
+             Place for Gallery Album
+      </div>
     </div>
   )
 }

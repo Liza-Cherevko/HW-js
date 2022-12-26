@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Gallery from './modules/gallery/components/Gallery';
 import GalleryAlbum from './modules/gallery/components/GalleryAlbum';
+import GalleryAlbumId from './modules/gallery/components/GalleryAlbumId';
 import Navigation from './modules/common/components/Navigation';
 import Post from './modules/posts/Post';
 import Users from './modules/users/components/Users';

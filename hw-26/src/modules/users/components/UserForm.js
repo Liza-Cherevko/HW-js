@@ -1,6 +1,6 @@
 
 import React, { useRef } from 'react';
-
+import { NavLink } from 'react-router-dom';
 function UserForm({ onSave, currentUser }) {
     const formRef = useRef();
 
@@ -21,7 +21,7 @@ function UserForm({ onSave, currentUser }) {
     return (
         <form className="row" ref={formRef}>
             <div className="three columns">
-                <input type="text" defaultValue={currentUser.id} name="id" />
+                <input type="hidden" defaultValue={currentUser.id} name="id"  />
                 <input
                     type="text"
                     defaultValue={currentUser.name}
@@ -46,7 +46,7 @@ function UserForm({ onSave, currentUser }) {
                 />
             </div>
             <div className="three columns">
-                <button type="button" onClick={onClick}>
+                <button type="button" onClick={onClick} to=".."  component={NavLink}>
                     Save
                 </button>
             </div>

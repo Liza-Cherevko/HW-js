@@ -18,6 +18,11 @@ function UserForm({ onSave, currentUser }) {
 
         formRef.current.reset();
     }
+
+
+
+
+    
     return (
         <form className="row" ref={formRef}>
             <div className="three columns">

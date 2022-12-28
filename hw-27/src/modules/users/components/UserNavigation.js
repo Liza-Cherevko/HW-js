@@ -1,16 +1,22 @@
-import { Button, Paper } from '@mui/material'
+import { Button, Paper } from '@mui/material';
 
-import { NavLink } from 'react-router-dom'
-import React from 'react'
+import { NavLink } from 'react-router-dom';
+import React from 'react';
 
 function UserNavigation() {
   return (
-      <Paper >
-          <Button to='' component={NavLink}>List</Button>
-          <Button to='new' component={NavLink} >Add</Button>
-          <Button to='/' component={NavLink} >Home</Button>
-      </Paper>
-  )
+    <Paper>
+        <Button to="" component={NavLink}>
+            List
+        </Button>
+        <Button to="new" component={NavLink}>
+            Add
+        </Button>
+        <Button to="/" component={NavLink}>
+            Home
+        </Button>
+    </Paper>
+);
 }
 
 export default UserNavigation

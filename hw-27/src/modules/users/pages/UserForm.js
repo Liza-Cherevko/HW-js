@@ -1,36 +1,62 @@
-import { NavLink, useParams } from 'react-router-dom';
-import {Paper, TextField} from '@mui/material';
+import { Button, Paper, TextField } from '@mui/material';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 
-import React from 'react'
+import React, { useRef } from 'react';
 import useUser from '../hooks/useUser';
+import { useForm } from "react-hook-form";
 
-function UserForm() {
-  const {id} = useParams();
-  const navigate = useNavigate();
-const {user, saveUser, changeUser}= useUser(id)
 
-function onInputChange(e) {
-  changeUser({
-      [e.target.name]: e.target.value,
-  });
-}
+function UserForm({ onSave }) {
+    const formRef = useRef();
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const { user, changeUser, saveUser } = useUser(id);
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  
 
-function onFormSubmit(){
-  e.preventDefault();
-  saveUser(user).then(() => navigate('..'));
-}
+    function onInputChange(e) {
+        changeUser({
+            [e.target.name]: e.target.value,
+        });
+    }
 
-  return (
-    <Paper sx={{marginTop:'20px'}}>
-      <form onSubmit={onFormSubmit}>
-            <TextField
+    // function onFormSubmit(e) {
+    //     e.preventDefault();
+    //     saveUser(user).then(() => navigate('..'));
+    // }
+
+    function onClick(e) {
+        e.preventDefault();
+        const form = formRef.current.elements;
+        onSave({
+            id: form.id.value,
+            name: form.name.value,
+            surname: form.surname.value,
+            email: form.email.value,
+        });
+
+        formRef.current.reset();
+    }
+
+
+
+    
+    return (
+        <Paper sx={{ marginTop: '20px' }}>
+            <form onSubmit={handleSubmit(onClick)}>
+               
+                <TextField
                     name="name"
                     label="Name"
                     variant="outlined"
                     fullWidth
                     value={user.name}
                     onChange={onInputChange}
+                    {...register("name", { required: "Name is required" })}
+                    error={Boolean(errors.name)}
+                    helperText={errors.name?.message}
                 />
+            
                 <TextField
                     name="surname"
                     label="Surname"
@@ -38,7 +64,11 @@ function onFormSubmit(){
                     fullWidth
                     value={user.surname}
                     onChange={onInputChange}
+                    {...register("surname", { required: "Surname is required" })}
+                    error={Boolean(errors.surname)}
+                    helperText={errors.surname?.message}
                 />
+               
                 <TextField
                     name="email"
                     label="Email"
@@ -46,12 +76,19 @@ function onFormSubmit(){
                     fullWidth
                     value={user.email}
                     onChange={onInputChange}
+                    {...register("email", { required: "Email is required" })}
+                    error={Boolean(errors.email)}
+                    helperText={errors.email?.message}
                 />
-     <Button variant="contained" color="primary" type='submit' >Save</Button>
-     <Button variant="outlined" color="error" to='..' component={NavLink}>Cancel</Button>
-     </form>
-    </Paper>
-  )
+                <Button type="submit" color="primary" variant="contained">
+                    Save
+                </Button>
+                <Button to=".." component={NavLink}>
+                    Cancel
+                </Button>
+            </form>
+        </Paper>
+    );
 }
 
-export default UserForm
+export default UserForm;

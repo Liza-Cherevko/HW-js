@@ -1,18 +1,14 @@
+
 import { Button, Paper, TextField } from '@mui/material';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import useUser from '../hooks/useUser';
-import { useForm } from "react-hook-form";
 
-
-function UserForm({ onSave }) {
-    const formRef = useRef();
+function UserForm() {
     const { id } = useParams();
     const navigate = useNavigate();
     const { user, changeUser, saveUser } = useUser(id);
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  
 
     function onInputChange(e) {
         changeUser({
@@ -20,31 +16,14 @@ function UserForm({ onSave }) {
         });
     }
 
-    // function onFormSubmit(e) {
-    //     e.preventDefault();
-    //     saveUser(user).then(() => navigate('..'));
-    // }
-
-    function onClick(e) {
+    function onFormSubmit(e) {
         e.preventDefault();
-        const form = formRef.current.elements;
-        onSave({
-            id: form.id.value,
-            name: form.name.value,
-            surname: form.surname.value,
-            email: form.email.value,
-        });
-
-        formRef.current.reset();
+        saveUser(user).then(() => navigate('..'));
     }
 
-
-
-    
     return (
         <Paper sx={{ marginTop: '20px' }}>
-            <form onSubmit={handleSubmit(onClick)}>
-               
+            <form onSubmit={onFormSubmit}>
                 <TextField
                     name="name"
                     label="Name"
@@ -52,11 +31,7 @@ function UserForm({ onSave }) {
                     fullWidth
                     value={user.name}
                     onChange={onInputChange}
-                    {...register("name", { required: "Name is required" })}
-                    error={Boolean(errors.name)}
-                    helperText={errors.name?.message}
                 />
-            
                 <TextField
                     name="surname"
                     label="Surname"
@@ -64,11 +39,7 @@ function UserForm({ onSave }) {
                     fullWidth
                     value={user.surname}
                     onChange={onInputChange}
-                    {...register("surname", { required: "Surname is required" })}
-                    error={Boolean(errors.surname)}
-                    helperText={errors.surname?.message}
                 />
-               
                 <TextField
                     name="email"
                     label="Email"
@@ -76,9 +47,6 @@ function UserForm({ onSave }) {
                     fullWidth
                     value={user.email}
                     onChange={onInputChange}
-                    {...register("email", { required: "Email is required" })}
-                    error={Boolean(errors.email)}
-                    helperText={errors.email?.message}
                 />
                 <Button type="submit" color="primary" variant="contained">
                     Save

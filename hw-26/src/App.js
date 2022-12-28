@@ -33,7 +33,7 @@
 import './App.css';
 import ContactsList from './component/pages/ContactsList';
 import Navbar from "./component/layout/Navbar";
-import AddUser from './component/pages/AddUser';
+import UserForm from './component/pages/UserForm';
 import EditUser from './component/pages/EditUser';
 import Home from './component/home/pages/Home'
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
@@ -49,7 +49,7 @@ function App() {
                     <Route path="/" element={<Navigate to="Contact-list" />} /> 
                    
                        <Route exact path="/Contact-list" element={<ContactsList/>}/>
-                      <Route exact path="/user/add" element={<AddUser/>}/>
+                      <Route exact path="/user:id" element={<UserForm/>}/>
                       <Route exact path="/user/edit" element={<EditUser/>}/>
                      
                   </Routes>

@@ -35,8 +35,10 @@ import ContactsList from './component/pages/ContactsList';
 import Navbar from "./component/layout/Navbar";
 import AddUser from './component/pages/AddUser';
 import EditUser from './component/pages/EditUser';
+import Home from './component/home/pages/Home'
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import { Navigate, Route, Routes} from "react-router-dom";
+import Users from './component/pages/Users';
 function App() {
   
         return (
@@ -44,8 +46,9 @@ function App() {
               <div className="container">
                   <Navbar/>
                   <Routes>
-                      <Route path="/" element={<Navigate to="Contact-list"/>}/>
-                      <Route exact path="/Contact-list" element={<ContactsList/>}/>
+                    <Route path="/" element={<Navigate to="Contact-list" />} /> 
+                   
+                       <Route exact path="/Contact-list" element={<ContactsList/>}/>
                       <Route exact path="/user/add" element={<AddUser/>}/>
                       <Route exact path="/user/edit" element={<EditUser/>}/>
                      

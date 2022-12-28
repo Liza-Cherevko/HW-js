@@ -68,6 +68,7 @@ function UserForm({ onSave }) {
     const { id } = useParams();
     const { user, changeUser, saveUser } = useUser(id);
 
+    console.log(id);
 
     function onInputChange(e) {
         changeUser({

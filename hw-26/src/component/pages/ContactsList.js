@@ -22,14 +22,14 @@ const ContactsList = () => {
                 </thead>
                 <tbody>
                 {list.map((item)=>(
-                    <tr>
-                        <th scope="row" class={{visibility: 'hidden'}}>{item +1 }</th>
+                    <tr key={item.id}>
+                        <th scope="row">{item.id}</th>
                         <td>{item.name}</td>
                         <td>{item.surname}</td>
                         <td>{item.email}</td>
                         <td>
-                            <Link className="btn" to="/user"><i className="fa-solid fa-eye m-2"></i></Link>
-                            <Link className="btn btn-outline-dark m-2"  to="/user/edit">Edit</Link>
+                            <Link className="btn" to={`/user/edit/${item.id}`}><i className="fa-solid fa-eye m-2"></i></Link>
+                            <Link className="btn btn-outline-dark m-2" to={`/user/edit/${item.id}`}>Edit</Link>
                             <Link className="btn btn-danger m-2"  onClick={() => deleteUser(item.id)} >Delete</Link>
                         </td>
                     </tr>

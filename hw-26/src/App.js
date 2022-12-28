@@ -50,7 +50,7 @@ function App() {
                    
                        <Route exact path="/Contact-list" element={<ContactsList/>}/>
                       <Route exact path="/user:id" element={<UserForm/>}/>
-                      <Route exact path="/user/edit" element={<EditUser/>}/>
+                      {/* <Route exact path="/user/edit" element={<EditUser/>}/> */}
                      
                   </Routes>
               </div>

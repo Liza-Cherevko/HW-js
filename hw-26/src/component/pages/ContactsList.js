@@ -23,9 +23,9 @@ const ContactsList = () => {
                 <tbody>
                 {list.map((item)=>(
                     <tr>
-                        <th scope="row">{item + 1}</th>
+                        <th scope="row" class={{visibility: 'hidden'}}>{item +1 }</th>
                         <td>{item.name}</td>
-                        <td>{item.username}</td>
+                        <td>{item.surname}</td>
                         <td>{item.email}</td>
                         <td>
                             <Link className="btn" to="/user"><i className="fa-solid fa-eye m-2"></i></Link>

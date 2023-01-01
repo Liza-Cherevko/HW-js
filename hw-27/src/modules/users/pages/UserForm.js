@@ -1,46 +1,57 @@
-
 import { Button, Paper, TextField } from '@mui/material';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
-// import { useForm } from 'react-hook-form';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import useUser from '../hooks/useUser';
 
 function UserForm() {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { user, changeUser, saveUser } = useUser(id);
-    // const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { user, saveUser } = useUser(id);
 
+    const [values, setValues] = useState(user)
     const [errors, setErrors] = useState({})
     const [touched, setTouched] = useState({})
     const [isValid, setIsValid] = useState(true)
-
+    const EMAIL_REGEXP =
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+  useEffect(() => {
+    setValues(user);
+    validate(user);
+    setTouched({})
+  }, [user])
 
     function onInputChange(e) {
-        changeUser({
-            [e.target.name]: e.target.value,
-        });
+        const newValues={...values, [e.target.name]:e.target.value};
+        setValues(newValues)
         setTouched({ ...touched, [e.target.name]: true })
-        validate
+        validate(newValues)
     }
+
+
+
+
 
     function onFormSubmit(e) {
         e.preventDefault();
-        saveUser(user).then(() => navigate('..'));
+        saveUser(values).then(() => navigate('..'));
     }
-   
 
 
-    function validate(values) { 
+
+    function validate(values) {
         const errors = {}
-        if (!values.name) { 
+        if (!values.name) {
             errors.name='Name is Required'
         }
-        if (!values.surname) { 
+        if (!values.surname) {
             errors.surname='Surname is Required'
         }
-        if (!values.email) { 
+        if (!values.email) {
             errors.email='Email is Required'
+        }
+        if (!EMAIL_REGEXP.test(values.email)) {
+            errors.email = 'Email is invalid';
         }
         setIsValid(!Object.keys(errors).length)
         setErrors(errors);
@@ -56,38 +67,36 @@ function UserForm() {
                     label="Name"
                     variant="outlined"
                     fullWidth
-                    value={user.name}
+                    value={values.name}
                     onChange={onInputChange}
-                    // {...register("name", { required: "Name is required" })}
-                    // error={Boolean(errors.name)}
-                    // helperText={errors.name?.message}
+                    error={touched.name && !!errors.name}
+                    helperText={ touched.name ?  errors.name: null }
+
                 />
-               
+
                 <TextField
                     name="surname"
                     label="Surname"
                     variant="outlined"
                     fullWidth
-                    value={user.surname}
+                    value={values.surname}
                     onChange={onInputChange}
-                    // {...register("surname", { required: "Surname is required" })}
-                    // error={Boolean(errors.surname)}
-                    // helperText={errors.surname?.message}
+                    error={ touched.surname && !!errors.surname}
+                    helperText={touched.surname ? errors.surname : null}
                 />
-           
+
                 <TextField
                     name="email"
                     label="Email"
                     variant="outlined"
                     fullWidth
-                    value={user.email}
+                    value={values.email}
                     onChange={onInputChange}
-                    // {...register("email", { required: "Email is required" })}
-                    // error={Boolean(errors.email)}
-                    // helperText={errors.email?.message}
+                    error={ touched.email && !!errors.email}
+                    helperText={touched.email ? errors.email : null}
                 />
-             
-                <Button type="submit" color="primary" variant="contained">
+
+                <Button type="submit" color="primary" variant="contained" disabled={!isValid}>
                     Save
                 </Button>
                 <Button to=".." component={NavLink}>

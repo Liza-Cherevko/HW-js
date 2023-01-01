@@ -6,13 +6,12 @@ const EMPTY_USER = {
     name: '',
     surname:'',
     email:''
-    
 }
-export default function useUser(id, initialValue){
+export default function useUser(id){
     const [user, setUser] = useState({EMPTY_USER});
 
-   
- 
+
+
     useEffect(() => {
         if(isNaN(id)){
             setUser(EMPTY_USER)
@@ -21,10 +20,10 @@ export default function useUser(id, initialValue){
         }
     },[id])
 
-   function changeUser(diff, e){
-       setUser({ ...user, ...diff })
-      
-    }
+//    function changeUser(diff, e){
+//        setUser({ ...user, ...diff })
+
+//     }
 
 
 
@@ -35,7 +34,7 @@ function saveUser(user){
         return createUser(user)
     }
     }
-    
+
 function updateUser(user) {
     return api.put('users/' + user.id, user);
 }
@@ -44,6 +43,6 @@ function createUser(user) {
     return api.post('users', user);
 }
     return{
-        user, changeUser, saveUser
+        user, saveUser
     }
 }

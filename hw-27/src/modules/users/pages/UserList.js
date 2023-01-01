@@ -10,17 +10,33 @@ import {
 } from '@mui/material';
 
 import { NavLink } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useUsersList from '../hooks/useUsersList';
-
+import ClipLoader from "react-spinners/ClipLoader";
 function UsersList() {
-  const { list,isLoading, deleteUser } = useUsersList();
+  const { list, deleteUser } = useUsersList();
+    const [isLoading, setIsLoading] = useState(false);
+    
+    useEffect(() => { 
+        setIsLoading(true)
+        setTimeout(() => {setIsLoading(false) },500)
+    },[])
+
+ 
+
+
+
+
 
     return (
       <div>
- {isLoading ? (
-                'Loading....'
-            ) : (
+ {isLoading ? 
+(    <ClipLoader
+        color={'#0053b1'}
+        loading={isLoading}
+        size={80}
+      />)
+             : (
       <TableContainer component={Paper} sx={{ marginTop: '20px' }}>
           <Table aria-label="simple table">
               <TableHead>

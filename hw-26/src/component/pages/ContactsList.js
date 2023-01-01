@@ -28,7 +28,7 @@ const ContactsList = () => {
                         <td>{item.surname}</td>
                         <td>{item.email}</td>
                         <td>
-                            <Link className="btn" to={`/user/edit/${item.id}`}><i className="fa-solid fa-eye m-2"></i></Link>
+                       
                             <Link className="btn btn-outline-dark m-2" to={`/user/edit/${item.id}`}>Edit</Link>
                             <Link className="btn btn-danger m-2"  onClick={() => deleteUser(item.id)} >Delete</Link>
                         </td>

@@ -2,40 +2,21 @@ import { Button, Paper, TextField } from '@mui/material';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
+import useForm from '../hooks/useForm';
 import useUser from '../hooks/useUser';
 
 function UserForm() {
     const { id } = useParams();
     const navigate = useNavigate();
     const { user, saveUser } = useUser(id);
-
-    const [values, setValues] = useState(user)
-    const [errors, setErrors] = useState({})
-    const [touched, setTouched] = useState({})
-    const [isValid, setIsValid] = useState(true)
-    const EMAIL_REGEXP =
-    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-  useEffect(() => {
-    setValues(user);
-    validate(user);
-    setTouched({})
-  }, [user])
-
-    function onInputChange(e) {
-        const newValues={...values, [e.target.name]:e.target.value};
-        setValues(newValues)
-        setTouched({ ...touched, [e.target.name]: true })
-        validate(newValues)
-    }
-
-
-
-
-
-    function onFormSubmit(e) {
-        e.preventDefault();
-        saveUser(values).then(() => navigate('..'));
-    }
+    const {
+        values,
+         errors,
+          touched,
+           isValid, 
+           onInputBlur, 
+           onInputChange
+    } = useForm(user)
 
 
 
@@ -58,7 +39,11 @@ function UserForm() {
     }
 
 
-
+    function onFormSubmit(e) {
+        e.preventDefault();
+        saveUser(values).then(() => navigate('..'));
+    }
+    
     return (
         <Paper sx={{ marginTop: '20px' }}>
             <form onSubmit={onFormSubmit}>

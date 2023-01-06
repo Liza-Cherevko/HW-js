@@ -1,20 +1,25 @@
 import React from 'react'
-
-function Form({ onSave }) {
+import { useDispatch } from 'react-redux';
+import saveTodo from '../../store/reducers/todoReducer'
+function Form({ todo }) {
 
     
-    function onFormSubmit(e) {
-        e.preventDefault();
+    // function onFormSubmit(e) {
+    //     e.preventDefault();
 
-        onSave({
-            title: e.target.title.value,
-        });
+    //     onSave({
+    //         title: e.target.title.value,
+    //     });
 
-        e.target.reset();
+    //     e.target.reset();
+    // }
+    const dispatch =  useDispatch();
+    function onSave() { 
+        dispatch(saveTodo(todo.id))
     }
 
   return (
-    <form onSubmit={onFormSubmit}>
+    <form onSubmit={onSave}>
     <div className="row">
         <div className="ten columns">
             <input

@@ -21,7 +21,13 @@ export default function (state = INITIAL_STATE, { type, payload }) {
     switch (type) {
         case DELETE_TODO : return {...state, list: state.list.filter((item)=> payload !== item.id)}
         case TOGGLE_TODO: return { ...state, list: state.list.map((item) => payload !== item.id ? item : { ...item, isDone: !item.isDone }) }
-        case ADD_TODO: return { ...state, list: state.list.map((item) => payload.id !== item.id ? item : {...item, id: Date.now(), ...state.list, isDone: false }) }
+        case ADD_TODO:{
+            const {id, title} = payload;
+            return {  list:[
+                    ...state.list,
+                    {title, isDone:false, id}
+                ]}
+        }
 default : return state
     }
 }

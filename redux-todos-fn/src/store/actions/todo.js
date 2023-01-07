@@ -9,6 +9,11 @@ export function toggleTodo(payload){
 } 
 
 export const ADD_TODO = 'ADD_TODO';
-export function addTodo(payload){
-    return{type: ADD_TODO, payload};
-} 
+export function addTodo(title){
+    return {
+        type: ADD_TODO,
+        payload: {
+            id: Date.now(), title
+        }
+    }
+}

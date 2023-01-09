@@ -1,34 +1,34 @@
-// import React, { useEffect, useState } from 'react';
-
-// export default  function useForm(initialValues){
+// import  {useState, useEffect } from 'react'
+// export default function useForm(initialValues, config) {
 //     const [values, setValues] = useState(initialValues)
 //     const [errors, setErrors] = useState({})
 //     const [touched, setTouched] = useState({})
-//     const [isValid, setIsValid] = useState(true)
-//     const EMAIL_REGEXP =
-//     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+//     // const [isValid, setIsValid] = useState(initialValues)
   
-//     useEffect(() => {
+//   useEffect(() => {
 //     setValues(initialValues);
-//     validate(initialValues);
+//   validate(initialValues);
 //     setTouched({})
 //   }, [initialValues])
 
-// function onInputBlur(e){
-//     setTouched({...touched, [e.target.name]: true})
-// }
-  
 //     function onInputChange(e) {
 //         const newValues={...values, [e.target.name]:e.target.value};
 //         setValues(newValues)
-//         setTouched({ ...touched, [e.target.name]: true })
-//         validate(newValues)
+//        validate(newValues)
+//     }
+
+//     function onInputBlur(e) {
+//         setTouched({...touched, [e.target.name]: true})
+//     }
+
+//     function validate(values) {
+//         const error = config.validate(values)
+//         setErrors(errors)
 //     }
 
 
-//     return {values, errors, touched, isValid, onInputBlur, onInputChange}
+//     return {values, errors, touched, isValid: !Object.keys(errors).length, onInputChange,onInputBlur }
 // }
-
 import { useEffect, useState } from 'react';
 
 //{

@@ -1,9 +1,7 @@
 import React from 'react'
-import {addTodo} from '../../store/actions/todo'
+import {createTodo} from '../../store/actions/todo'
 import { useDispatch } from 'react-redux';
 import  {useState} from "react";
-
-
 
 function Form() {
     const dispatch = useDispatch();
@@ -11,7 +9,7 @@ function Form() {
 
     function onFormSubmit(e) {
         e.preventDefault();
-        dispatch(addTodo({title: e.target.title.value}));
+        dispatch(createTodo({title: e.target.title.value}));
    
         e.target.reset();
     }

@@ -6,10 +6,7 @@ const INITIAL_STATE = {
     filters: {},
     name: 'Alex',
     list: [
-        { id: 1, name: 'title 1', surname: 'title 1', email: 'fsfs@gmail.com' },
-        { id: 2, name: 'title 2', surname: 'title 2', email: 'fsfs@gmail.com' },
-        { id: 3, name: 'title 3', surname: 'title 3', email: 'fsfs@gmail.com' },
-        { id: 4, name: 'title 4', surname:'title 4', email: 'fsfs@gmail.com' },
+       
     ]
 }
 

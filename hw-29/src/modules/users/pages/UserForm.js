@@ -1,11 +1,12 @@
 import { Button, Paper, TextField  } from '@mui/material';
 import { Field, Form, Formik } from 'formik';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
-
+import { useDispatch} from 'react-redux'
 import MyTextField from '../../common/components/Form/MyTextField';
 import React from 'react';
 import useForm from '../../common/hooks/useForm';
-import useUser from '../hooks/useUser';
+import useUser  from '../hooks/useUser';
+import { addUser } from '../../../store/actions/user';
 
 const EMAIL_REGEXP =
     /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -30,13 +31,15 @@ function validate(values) {
 }
 
 function UserForm() {
+    const dispatch = useDispatch()
     const { id } = useParams();
     const navigate = useNavigate();
-    const { user, saveUser } = useUser(id);
+    const { user, saveUsers } = useUser(id);
 
     function onFormSubmit(values) {
         // console.log('values', values);
-        saveUser(values).then(() => navigate('..'));
+        // saveUsers(values).then(() => navigate('..'));
+        dispatch(addUser(values)).then(() => navigate('..'))
     }
     // ===
 

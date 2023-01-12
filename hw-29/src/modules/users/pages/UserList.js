@@ -11,21 +11,30 @@ import {
 
 import { NavLink } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import useUsersList from '../hooks/useUsersList';
 import ClipLoader from "react-spinners/ClipLoader";
+import { useDispatch, useSelector } from 'react-redux';
+import selectList from '../../../store/selectors/user'
+import { deleteUser } from '../../../store/actions/user';
+
+
 function UsersList() {
-  const { list, deleteUser } = useUsersList();
+    const dispatch = useDispatch()
     const [isLoading, setIsLoading] = useState(false);
-    
-    useEffect(() => { 
+    const users = useSelector(selectList)
+
+   
+
+    // function onDeleteClick(e) { 
+    //    e.stopPropagation()
+    //     const action = deleteUser(users)
+    //     dispatch(action)
+       
+    // }
+
+    useEffect(() => {
         setIsLoading(true)
         setTimeout(() => {setIsLoading(false) },500)
     },[])
-
- 
-
-
-
 
 
     return (
@@ -48,7 +57,7 @@ function UsersList() {
                   </TableRow>
               </TableHead>
               <TableBody>
-                  {list.map((item) => (
+                  {users.map((item) => (
                       <TableRow key={item.id}>
                           <TableCell>{item.name}</TableCell>
                           <TableCell align="right">{item.surname}</TableCell>
@@ -64,7 +73,7 @@ function UsersList() {
                               <Button
                                   variant="outlined"
                                   color="error"
-                                  onClick={() => deleteUser(item.id)}
+                                  onClick={()=>dispatch(deleteUser(item.id))}
                               >
                                   Delete
                               </Button>

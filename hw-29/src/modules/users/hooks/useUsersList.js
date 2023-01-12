@@ -1,26 +1,27 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-import api from "../../../api";
+// import api from "../../../api";
 
-export default function useUsersList(){
-    const [list, setList] = useState([]);
-    
+// export default function useUsersList(){
+//     const [list, setList] = useState([]);
 
-    useEffect(()=>{
-        fetchUsers()
-    },[])
+//     useEffect(()=>{
+//         fetchUsers()
+//     },[])
 
-    function fetchUsers() {
+//     function fetchUsers() {
     
-        api.get('users').then(({ data }) => setList(data));
-}
+//         api.get('users').then(({ data }) => setList(data));
+// }
     
-function deleteUser(id){
-    api.delete('users/'+id).then(()=>{
-        fetchUsers();
-         // setList(list.filter((item) => item.id !== id));
-    })
-}
+//     function deleteUser(id) {
+//     api.delete('users/'+id).then(()=>{
+//         fetchUsers();
+//          setList(list.filter((item) => item.id !== id));
+//     })     
+// }
     
-    return {list, deleteUser, fetchUsers}
- }
+ 
+
+//         return {list, deleteUser }
+//  }

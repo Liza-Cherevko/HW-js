@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import saveUser from './useUsersList'
 import api from "../../../api";
 
 const EMPTY_USER = {
@@ -16,24 +16,20 @@ export default function useUser(id){
         if(isNaN(id)){
             setUser(EMPTY_USER)
         }else{
-            api.get('users/'+id).then(({data})=>setUser(data))
+            // api.get('users/'+id).then(({data})=>setUser(data))
         }
     },[id])
 
-//    function changeUser(diff, e){
-//        setUser({ ...user, ...diff })
-
-//     }
 
 
 
-function saveUser(user){
-    if(user.id){
-        return updateUser(user)
-    }else{
-        return createUser(user)
+function saveUser(user) {
+    if (user.id) {
+        return updateUser(user);
+    } else {
+        return createUser(user);
     }
-    }
+}
 
 function updateUser(user) {
     return api.put('users/' + user.id, user);

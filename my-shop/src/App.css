@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+.container{
+  max-width: 1200px;
+  margin: auto;
+}
+.login-txt{
+ text-align: center;
+  font-weight: bold;
+  font-size: large;
+  color: rgb(14, 46, 189);
+  
+}
+
+.form{
+  padding: 50px;
+  text-align: center;
+  max-width: 500px;
+  margin: auto;
+
+}

@@ -54,6 +54,7 @@ function UserForm() {
             >
                 {({ isValid }) => (
                     <Form>
+                        
                         <MyTextField name="name" label="Name" fullWidth />
                         <MyTextField name="surname" label="Surname" fullWidth />
                         <MyTextField
@@ -73,6 +74,7 @@ function UserForm() {
                         <Button to=".." component={NavLink}>
                             Cancel
                         </Button>
+                      
                     </Form>
                 )}
             </Formik>

@@ -12,6 +12,7 @@ import Products from './modules/user/products/pages/Products'
 function App() {
   return (
     <Routes>
+     
       <Route path='/' exact element={ <Landing/>}/>
       <Route path='/shop' element={<Products />} />
       
@@ -25,6 +26,7 @@ function App() {
         <Route path='' element={<Navigate to='dashboard' />} />   
         <Route path='dashboard' element={<Dashboard />} />  
       </Route>
+    
     </Routes>
   )
 }

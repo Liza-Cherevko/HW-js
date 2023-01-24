@@ -14,33 +14,39 @@ function Landing() {
     const user = useUser();
 
     return (
-     
+      <div>
+      {JSON.stringify(user)}
+      Landing
+      <NavLink to="/auth">Login</NavLink>
+      <NavLink to="/auth/logout">Logout</NavLink>
+      <NavLink to="/admin">Admin Panel</NavLink>
+  </div>
  
-                <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+      //           <Box sx={{ flexGrow: 1 }}>
+      //   <AppBar position="static">
          
-          <Toolbar >
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ mr: 2 }}
-            >
+      //     <Toolbar >
+      //       <IconButton
+      //         size="large"
+      //         edge="start"
+      //         color="inherit"
+      //         aria-label="menu"
+      //         sx={{ mr: 2 }}
+      //       >
             
-            </IconButton>
-             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-             {JSON.stringify(user)}
-                <br/>
-            Landing
-            </Typography>
-             {/* <NavLink to="/auth">Login</NavLink>
-                    <NavLink to="/admin">Admin Panel</NavLink> */}
-            <Button color="inherit" component={NavLink} to='/auth'>Login</Button>
-          </Toolbar>
+      //       </IconButton>
+      //        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+      //        {JSON.stringify(user)}
+      //           <br/>
+      //       Landing
+      //       </Typography>
+      //        {/* <NavLink to="/auth">Login</NavLink>
+      //               <NavLink to="/admin">Admin Panel</NavLink> */}
+      //       <Button color="inherit" component={NavLink} to='/auth'>Login</Button>
+      //     </Toolbar>
        
-        </AppBar>
-      </Box>
+      //   </AppBar>
+      // </Box>
 
         
     );

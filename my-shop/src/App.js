@@ -14,6 +14,9 @@ import Categories from './modules/admin/categories/pages/Categories'
 import Product from './modules/admin/products/pages/Product'
 import CategoriesList from './modules/admin/categories/pages/CategoriesList'
 import NewCategory from './modules/admin/categories/pages/NewCategory'
+import ProductsList from './modules/admin/products/pages/ProductList'
+import NewProduct from './modules/admin/products/pages/NewProduct'
+import EditProduct from './modules/admin/products/pages/EditProduct'
 
 function App() {
   return (
@@ -42,8 +45,14 @@ function App() {
             <Route path="new" element={<NewCategory />} />
           </Route>
           </Route>
-          <Route path='products' element={<Product />} />  
-      </Route>
+
+          <Route path='products' element={<Product />} >  
+          <Route path="" element={<ProductsList/>}>
+          <Route path="new" element={<NewProduct/>}/>
+             <Route path="edit/:id" element={<EditProduct/>}/>
+            </Route>
+            </Route>
+        </Route>
     </Routes>
 </Container>
   )

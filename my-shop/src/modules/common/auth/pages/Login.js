@@ -1,22 +1,28 @@
 
 import { Link, Navigate} from 'react-router-dom';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { Button,  TextField, Box,  FormControlLabel, Grid, Checkbox, Typography, Select, Avatar, MenuItem   } from '@mui/material';
+import { Button, Box,   Typography,  Avatar,} from '@mui/material';
 import { Form, Formik } from 'formik';
 import loginValidationSchema from '../validation/loginValidationSchema';
 import MyTextField from '../../form/form/MyTextField';
-import MySelect from '../../form/form/MySelect';
+
 import useAuth from '../hooks/useAuth';
 
 
 
-const initialValues = { username: '', password: '', role:'admin' };
+const initialValues = { username: '', password: '',  };
 function Login() {
     const auth = useAuth();
 
-    function onSubmit(values) {
-            console.log('submit', values);
-        auth.login(values.username, values.password, values.role);
+    function onSubmit(values, meta) {
+        console.log('submiting', values, meta);
+        auth.login(values.username, values.password).catch((error) => {
+            if (error.response.status >= 400 && error.response.status < 500) {
+                meta.setErrors({
+                    password: error.response.data.error,
+                });
+            }
+        });
     }
     return (
       <Formik
@@ -56,10 +62,6 @@ function Login() {
                       label="Password"
                       type="password"
               />
-              <MySelect name='role' fullWidth label='role'>
-                <MenuItem value='admin'>Admin</MenuItem>
-                <MenuItem value='user'>User</MenuItem>
-              </MySelect>
                   <Button
                       type="submit"
                       fullWidth
